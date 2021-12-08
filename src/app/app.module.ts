@@ -9,18 +9,27 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';  
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SignUpComponent
+    NavbarComponent, 
+    SignUpComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule,
     BrowserAnimationsModule
   ],
   providers: [UtilService],
