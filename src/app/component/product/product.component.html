@@ -1,0 +1,19 @@
+<div id="featuredProduct">
+    <ul *ngFor="let f of featured">
+        <div id="productName">{{f.productName}}</div>
+        <div id="productPic">{{f.productPic}}</div>
+        <div id="productPrice">{{f.discountRate}} %</div>
+        <div id="productPrice">{{f.productPrice}}</div>
+        <div id="description">{{f.description}}</div>
+        <button (click)="addToCart(f)">Add to Cart</button>
+    </ul>
+</div>
+<div id="allProduct">
+    <ul *ngFor="let p of product">
+        <div id="productName">{{p.productName}}</div>
+        <div id="productPic">{{p.productPic}}</div>
+        <div id="productPrice">{{p.productPrice}}</div>
+        <div id="description">{{p.description}}</div>
+        <button (click)="addToCart(p)">Add to Cart</button>
+    </ul>
+</div>
