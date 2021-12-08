@@ -10,6 +10,9 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [UtilService],
   bootstrap: [AppComponent]
