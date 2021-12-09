@@ -37,13 +37,14 @@ export class SignUpComponent implements OnInit {
 
   signUp(userFields: any, userProfileFields: any, confirmPassword: string) {
     if (userFields.password != confirmPassword) {
-      this.resetFields();
       this._isValid = false;
     } else if (userFields.username != "" && userFields.password != "" && confirmPassword != "" && userFields.email != "" && userFields.userType != "") {
-      
       if (userProfileFields.firstName != "" && userProfileFields.lastName != "" && userProfileFields.address != "" && userProfileFields.city != "" && userProfileFields.zipCode != "") {
-        if (userProfileFields.profilePic == "") userProfileFields.profilePic = null;
-        if (userProfileFields.aboutMe == "") userProfileFields.aboutMe = null;
+
+        if (userProfileFields.profilePic == "") 
+          userProfileFields.profilePic = null;
+        if (userProfileFields.aboutMe == "") 
+          userProfileFields.aboutMe = null;
 
         this._isValid = true;
         // Insert HTTP request here
@@ -56,28 +57,10 @@ export class SignUpComponent implements OnInit {
           }, 2000)
         }
       } else {
-        this.resetFields();
         this._isValid = false;
       }
     } else {
-      this.resetFields();
       this._isValid = false;
     }
   }
-
-  resetFields() {
-    this._userFields.username = '';
-    this._userFields.password = '';
-    this._confirmPassword = '';
-    this._userFields.email = '';
-    this._userFields.userType = '';
-    this._userProfileFields.firstName = '';
-    this._userProfileFields.lastName = '';
-    this._userProfileFields.address = '';
-    this._userProfileFields.city = '';
-    this._userProfileFields.zipCode = '';
-    this._userProfileFields.profilePic = '';
-    this._userProfileFields.aboutMe = '';
-  }
-
 }

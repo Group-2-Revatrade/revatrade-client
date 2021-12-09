@@ -4,23 +4,23 @@
             <h2 class="col-12 fw-bolder text-center my-3">Sign Up</h2>
             
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Username</label>
-                <input class="form-control" type="text" placeholder="Username" [(ngModel)]='_userFields.username' name="username" required minlength="8">
+                <label for="username" class="form-label h6">Username</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userFields.username == ''}" class="form-control" type="text" placeholder="Username" [(ngModel)]='_userFields.username' name="username" required minlength="8">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Email</label>
-                <input class="form-control" type="email" placeholder="Email" [(ngModel)]='_userFields.email' name="email" required>
+                <label for="email" class="form-label h6">Email</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userFields.email == ''}" class="form-control" type="email" placeholder="Email" [(ngModel)]='_userFields.email' name="email" required>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Password</label>
-                <input [ngClass]="{'border border-danger': _userFields.password != _confirmPassword}" class="form-control" type="password" placeholder="Password" [(ngModel)]='_userFields.password' name="password" required minlength="8">
+                <label for="password" class="form-label h6">Password</label>
+                <input [ngClass]="{'border border-danger': _userFields.password != _confirmPassword || !_isValid && _userFields.password == ''}" class="form-control" type="password" placeholder="Password" [(ngModel)]='_userFields.password' name="password" required minlength="8">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Confirm Password</label>
-                <input [ngClass]="{'border border-danger': _userFields.password != _confirmPassword}" class="form-control" type="password" placeholder="Confirm Password" [(ngModel)]='_confirmPassword' name="confirmPassword" required minlength="8">
+                <label for="confirmPassword" class="form-label h6">Confirm Password</label>
+                <input [ngClass]="{'border border-danger': _userFields.password != _confirmPassword || !_isValid && _userFields.password == ''}" class="form-control" type="password" placeholder="Confirm Password" [(ngModel)]='_confirmPassword' name="confirmPassword" required minlength="8">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">User Type</label>
+                <label for="userType" class="form-label h6">User Type</label>
                 <!-- Disabled until other user types are identified -->
                 <select class="form-select" [(ngModel)]='_userFields.userType' name="userType" disabled>
                     <option selected value="Customer">Customer</option>
@@ -28,32 +28,32 @@
             </div>
             
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">First Name</label>
-                <input class="form-control" type="text" placeholder="First Name" [(ngModel)]='_userProfileFields.firstName' name="firstName" required>
+                <label for="firstName" class="form-label h6">First Name</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userProfileFields.firstName == ''}" class="form-control" type="text" placeholder="First Name" [(ngModel)]='_userProfileFields.firstName' name="firstName" required>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Last Name</label>
-                <input class="form-control" type="text" placeholder="Last Name" [(ngModel)]='_userProfileFields.lastName' name="lastName" required>
+                <label for="lastName" class="form-label h6">Last Name</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userProfileFields.lastName == ''}" class="form-control" type="text" placeholder="Last Name" [(ngModel)]='_userProfileFields.lastName' name="lastName" required>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Street Address</label>
-                <input class="form-control" type="text" placeholder="Street Address" [(ngModel)]='_userProfileFields.address' name="address">
+                <label for="address" class="form-label h6">Street Address</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userProfileFields.address == ''}" class="form-control" type="text" placeholder="Street Address" [(ngModel)]='_userProfileFields.address' name="address">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">City</label>
-                <input class="form-control" type="text" placeholder="City" [(ngModel)]='_userProfileFields.city' name="city">
+                <label for="city" class="form-label h6">City</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userProfileFields.city == ''}" class="form-control" type="text" placeholder="City" [(ngModel)]='_userProfileFields.city' name="city">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Zip Code</label>
-                <input class="form-control" type="text" placeholder="Zip Code" [(ngModel)]='_userProfileFields.zipCode' name="zipeCode">
+                <label for="zipCode" class="form-label h6">Zip Code</label>
+                <input [ngClass]="{'border border-danger': !_isValid && _userProfileFields.zipCode == ''}" class="form-control" type="text" placeholder="Zip Code" [(ngModel)]='_userProfileFields.zipCode' name="zipCode">
             </div>
             <!-- console: C:\\fakepath\\<JPEG file name>.jpg | Revisit for S3 Bucket-->
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">Select a picture for your profile</label>
+                <label for="profilePic" class="form-label h6">Select a picture for your profile</label>
                 <input class="form-control" type="file" [(ngModel)]='_userProfileFields.profilePic' name="profilePic">
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="formFile" class="form-label h6">About Me</label>
+                <label for="aboutMe" class="form-label h6">About Me</label>
                 <textarea class="form-control" type="text" placeholder="About Me" [(ngModel)]='_userProfileFields.aboutMe' name="aboutMe" maxlength="255"></textarea>
             </div>
             <div *ngIf="!_isValid" class="d-flex justify-content-center text-danger my-3">

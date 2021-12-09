@@ -11,6 +11,8 @@ import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
+import { CheckoutComponent } from './page/checkout/checkout.component';
+import { ProductService } from './service/product.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CartComponent } from './page/cart/cart.component';
     NavbarComponent,
     SignUpComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { CartComponent } from './page/cart/cart.component';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [UtilService],
+  providers: [UtilService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
