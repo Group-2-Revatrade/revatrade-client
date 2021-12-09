@@ -21,7 +21,8 @@
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
                 <label for="formFile" class="form-label h6">User Type</label>
-                <select class="form-select" [(ngModel)]='_userFields.userType' name="userType">
+                <!-- Disabled until other user types are identified -->
+                <select class="form-select" [(ngModel)]='_userFields.userType' name="userType" disabled>
                     <option selected value="Customer">Customer</option>
                 </select>
             </div>
