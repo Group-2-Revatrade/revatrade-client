@@ -1,18 +1,24 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8">
+            <div class="col-6">
                 <a class="navbar-brand" routerLink="">
                     REVATRADE
                 </a>
             </div>
         </div>
+        <div class="col-6 d-flex justify-content-end">
+            <div class="col-6 col-md-3 d-flex"> 
+                <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+            </div>
+            <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
+                <button class="btn btn-primary fw-bold" routerLink="login">Log In</button>
+            </div>
+            <div *ngIf="isLoggedIn" class="col-6 col-md-3 d-flex">
+                <button class="btn btn-primary fw-bold" (click)="logout()">Log Out</button>
+            </div>
+        </div>
+
         
-        <div *ngIf="!isLoggedIn" class="col-4 d-flex justify-content-end">
-            <button class="btn btn-primary fw-bold" routerLink="login">Log In</button>
-        </div>
-        <div *ngIf="isLoggedIn" class="col-4 d-flex justify-content-end">
-            <button class="btn btn-primary fw-bold" (click)="logout()">Log Out</button>
-        </div>
     </div>
 </nav>
