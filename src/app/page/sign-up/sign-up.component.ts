@@ -40,8 +40,6 @@ export class SignUpComponent implements OnInit {
       this.resetFields();
       this._isValid = false;
     } else if (userFields.username != "" && userFields.password != "" && confirmPassword != "" && userFields.email != "" && userFields.userType != "") {
-      if (userFields.birthday == "") userFields.birthday = null;
-      if (userFields.aboutMe == "") userFields.aboutMe = null;
       
       if (userProfileFields.firstName != "" && userProfileFields.lastName != "" && userProfileFields.address != "" && userProfileFields.city != "" && userProfileFields.zipCode != "") {
         if (userProfileFields.profilePic == "") userProfileFields.profilePic = null;
