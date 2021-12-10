@@ -1,19 +1,45 @@
-<div id="featuredProduct">
-    <ul *ngFor="let f of featured">
-        <div id="productName">{{f.productName}}</div>
-        <div id="productPic">{{f.productPic}}</div>
-        <div id="productPrice">{{f.discountRate}} %</div>
-        <div id="productPrice">{{f.productPrice}}</div>
-        <div id="description">{{f.description}}</div>
-        <button (click)="addToCart(f)">Add to Cart</button>
-    </ul>
+<div class="featured">
+    <a>Items on Sale</a>
+    <div class="featuredProduct">
+
+        <tr *ngFor="let f of featured">
+            <ul>
+                <div class="productName">{{f.productName}}</div>
+                <img class="displaypic" src="{{f.productPic}}">
+                <div class="productPrice">{{f.discountRate}} %</div>
+                <div class="productPrice">${{f.productPrice}}</div>
+                <div>Quantity: <input class="quantity" type="number" name="amount" min="1" max="{{f.productQuantity}}" [(ngModel)]="f.amount"></div>
+                <div><button (click)="addToCart(f)">Add to Cart</button></div>
+            </ul>
+        </tr>
+    </div>
 </div>
-<div id="allProduct">
-    <ul *ngFor="let p of product">
-        <div id="productName">{{p.productName}}</div>
-        <div id="productPic">{{p.productPic}}</div>
-        <div id="productPrice">{{p.productPrice}}</div>
-        <div id="description">{{p.description}}</div>
-        <button (click)="addToCart(p)">Add to Cart</button>
-    </ul>
+<div class="search">
+    <input class="input" ype="text" placeholder="Search for your new items" [(ngModel)]="term">
+    <button (click)="searchProduct(term)">Search</button>
+</div>
+
+<div class="allProduct ">
+
+    <div class="producttosell" *ngFor="let p of product">
+        <div class="space">
+            <td class="pic">
+                <div class="productName">{{p.productName}}</div>
+                <img id="productPic" class="displaypic" src="{{p.productPic}}"></td>
+
+            <td class="items">
+
+                <tr>
+                    <div class="description">{{p.description}}</div>
+                </tr>
+            </td>
+            <td class="checkout">
+                <tr><span class="productPrice">${{p.productPrice}}</span></tr>
+                <tr>Quantity: <input class="quantity" type="number" name="amount" min="1" max="{{p.productQuantity}}" [(ngModel)]="p.amount"></tr>
+                <tr><span Class="button"><button  (click)="addToCart(p)">Add to Cart</button>
+                </span></tr>
+
+            </td>
+        </div>
+    </div>
 </div>

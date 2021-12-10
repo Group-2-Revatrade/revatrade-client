@@ -1,6 +1,6 @@
 export class Product{
     constructor(public productId:number, public productName:String, public productPrice:number, public productQuantity:number, 
-        public discount:boolean, public discountRate:number, public description:string, public productPic:string){
+        public discount:boolean, public discountRate:number, public description:string, public productPic:string,public amount:Number){
 
         this.productId=productId;
         this.productName=productName;
@@ -10,6 +10,7 @@ export class Product{
         this.discountRate=discountRate;
         this.description=description;
         this.productPic=productPic;
+        this.amount=amount;
     }
     
     getproductId(){
@@ -35,6 +36,9 @@ export class Product{
     }
     getProductPic(){
         return this.productPic;
+    }
+    getAmount(){
+        return this.amount;
     }
 
 }

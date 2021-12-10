@@ -10,13 +10,15 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductPageComponent } from './page/product-page/product-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     NavbarComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
