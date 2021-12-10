@@ -10,13 +10,20 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './page/login/login.component';
+import { CartComponent } from './page/cart/cart.component';
+import { CheckoutComponent } from './page/checkout/checkout.component';
+import { CartService } from './service/cart.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     NavbarComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent,
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [UtilService],
+  providers: [UtilService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
