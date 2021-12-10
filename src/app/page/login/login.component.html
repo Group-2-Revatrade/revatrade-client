@@ -1,0 +1,51 @@
+<div>
+  <form class="container border shadow rounded my-5">
+    <div class="row">
+      <h2 class="col-12 fw-bolder text-center my-3">Login</h2>
+
+      <div class="offset-1 col-10 d-flex flex-column my-3">
+        <input class="form-control"
+               type="text"
+               placeholder="Username"
+               [(ngModel)]='_userFields.username'
+               name="username"
+               required
+               minlength="8">
+      </div>
+      <div class="offset-1 col-10 d-flex flex-column my-3">
+        <input class="form-control"
+               type="password"
+               placeholder="Password"
+               [(ngModel)]='_userFields.password'
+               name="password"
+               required
+               minlength="8">
+      </div>
+
+      <div *ngIf="!_isValid" class="d-flex justify-content-center text-danger my-3">
+        Username and/or password are incorrect! >>> HINT!!! "revatrade" :D
+      </div>
+      <div *ngIf="_loginSuccess" class="d-flex justify-content-center text-success my-3">
+        Login successful!
+      </div>
+
+      <div class="offset-1 col-5 d-flex flex-column my-3">
+        <button *ngIf="!_loginSuccess"
+                type="login"
+                class="btn btn-primary fw-bold"
+                (click)="login(_userFields)">Login</button>
+        <button *ngIf="_loginSuccess" class="btn btn-primary" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="col-5 d-flex flex-column my-3">
+        <button routerLink="" class="btn btn-secondary fw-bold">Cancel</button>
+      </div>
+
+      <a class="d-flex justify-content-center my-3" routerLink="/sign-up">
+        Create an acccount
+      </a>
+
+    </div>
+  </form>
+</div>
