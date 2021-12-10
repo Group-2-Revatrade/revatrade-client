@@ -44,6 +44,12 @@ export class ProductComponent implements OnInit {
     if(term!=null){
       this.productService.searchProduct(term).subscribe((data)=>{
         this.product=data;
+        for(let i=0;i<data.length;i++){
+          if(data[i].discount==true){
+            data[i].productPrice=roundTo(data[i].productPrice*(1-data[i].discountRate/100),2);
+            this.product[i]=data[i];
+          }
+        }
       })
     }
   }
