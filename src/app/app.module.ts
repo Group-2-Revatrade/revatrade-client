@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
-import { ProductService } from './service/product.service';
+import { CartService } from './service/cart.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { ProductService } from './service/product.service';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [UtilService, ProductService],
+  providers: [UtilService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

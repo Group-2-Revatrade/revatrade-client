@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/service/product.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,10 +16,10 @@ export class CartComponent implements OnInit {
 
   _subTotal: number = 0; // With products array example, subtotal is $55
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.products;
+    this.products = this.cartService.products;
     this.calculateSubTotal();
   }
 

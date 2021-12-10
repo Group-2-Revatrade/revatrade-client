@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CartService {
 
   products: Array<any> = [
     { productId: 4, productName: 'spoon', productPrice: 1, productQuantity: 20, discount: false, discountRate: null, description: 'for soup', productPic: null },
@@ -13,9 +11,5 @@ export class ProductService {
     { productId: 7, productName: 'knife', productPrice: 1.50, productQuantity: 10, discount: false, discountRate: null, description: 'for steak', productPic: null }
   ]
 
-  constructor(private httpClient: HttpClient) { }
-
-  getAllProduct(): Observable<any[]> {
-    return this.httpClient.get("") as Observable<any[]>
-  }
+  constructor() { }
 }

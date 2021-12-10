@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/service/product.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -22,10 +22,10 @@ export class CheckoutComponent implements OnInit {
   _orderPlaced: boolean = false;
   _isValid: boolean = true;
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.products;
+    this.products = this.cartService.products;
     this.calculateOrderAmount();
   }
 
@@ -43,7 +43,7 @@ export class CheckoutComponent implements OnInit {
     console.log(productId);
     this.products.forEach((product, index) => {
       if (product.productId == productId)
-        this.productService.products.splice(index, 1);
+        this.cartService.products.splice(index, 1);
     });
     this.calculateOrderAmount();
   }
@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
       // HTTP request goes here
       if (true) { // To be trigger by the HTTP response body's variable
         this._orderPlaced = true;
-        this.productService.products = [];
+        this.cartService.products = [];
         setTimeout(() => {
           this.router.navigate(['']);
         }, 2000);
