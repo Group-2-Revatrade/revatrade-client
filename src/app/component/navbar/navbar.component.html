@@ -10,6 +10,8 @@
         <div class="col-6 d-flex justify-content-end">
             <div class="col-6 col-md-3 d-flex"> 
                 <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+                &nbsp;
+                <span class="text-white h6">{{_productCount}}</span>
             </div>
             <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
                 <button class="btn btn-primary fw-bold" routerLink="login">Log In</button>
