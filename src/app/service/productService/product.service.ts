@@ -10,9 +10,11 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getAllProduct():Observable<Product[]>{
-    return this.httpClient.get("") as Observable<Product[]>
+  getAllProduct(){
+    return this.httpClient.get<Product[]>("http://localhost:8080/revatrade/products/all")
   }
 
-  
+  searchProduct(term:String){
+    return this.httpClient.get<Product[]>("http://localhost:8080/revatrade/products/search?term="+term)
+  }
 }
