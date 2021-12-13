@@ -16,6 +16,9 @@ import { ProductPageComponent } from './page/product-page/product-page.component
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { CartService } from './service/cart.service';
+import { UserService } from './service/user.service';
+import { ProductService } from './service/productService/product.service';
+import { OrderService } from './service/order.service';
 
 // ----------------
 import { ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +52,7 @@ import { LogoutService } from './service/logoutService/logout.service';
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [UtilService, CartService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
+  providers: [UtilService, CartService, UserService, ProductService, OrderService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
