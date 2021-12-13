@@ -32,10 +32,7 @@ export class CheckoutComponent implements OnInit {
   calculateOrderAmount(): void {
     this._orderAmount = 0;
     this.products.forEach((product) => {
-      if (product.discount == true)
-        this._orderAmount += (product.productPrice * (1 - product.discountRate) * product.productQuantity);
-      else
-        this._orderAmount += product.productPrice * product.productQuantity;
+        this._orderAmount += product.productPrice * product.amount;
     })
   }
 
@@ -58,6 +55,7 @@ export class CheckoutComponent implements OnInit {
       if (true) { // To be trigger by the HTTP response body's variable
         this._orderPlaced = true;
         this.cartService.products = [];
+        sessionStorage.clear();
         setTimeout(() => {
           this.router.navigate(['']);
         }, 2000);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
+import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/productService/product.service';
 
 
@@ -12,7 +13,7 @@ export class ProductComponent implements OnInit {
   product:Product[]=[]
   featured:Product[]=[]
   term:String ="";
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService, private cartService: CartService) { }
   
   ngOnInit(): void {
     this.getAllProducts();
@@ -37,7 +38,20 @@ export class ProductComponent implements OnInit {
   
   addToCart(product:Product){
     //prints aout the quanity they want rn to add to the cart
-    console.log(product.amount)
+    let inCart: boolean = false;
+    let cartItems: Product[] = this.cartService.products;
+    for(let index: number = 0; index < cartItems.length; index++) {
+      if(product.productId == cartItems[index].productId) {
+        cartItems[index].amount = product.amount;
+        inCart = true;
+      }
+    }
+    if(inCart == false && product.amount <= product.productQuantity) {
+      this.cartService.products.push(product);
+      sessionStorage.setItem('cart', JSON.stringify(this.cartService.products));
+      console.log(JSON.parse(sessionStorage.cart));
+    }
+
   }
 
   searchProduct(term:String){
