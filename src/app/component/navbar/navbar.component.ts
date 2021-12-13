@@ -16,11 +16,19 @@ export class NavbarComponent implements OnInit, DoCheck {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this._productCount = this.cartService.products.length;
+    this._productCount = this.itemsInCart();
   }
 
   ngDoCheck(): void {
-    this._productCount = this.cartService.products.length;
+    this._productCount = this.itemsInCart();
+  }
+
+  itemsInCart(): number {
+    let count: number = 0;
+    this.cartService.products.forEach(product => {
+      count += product.productQuantity;
+    });
+    return count;
   }
 
   logout() {
