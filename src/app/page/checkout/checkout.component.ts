@@ -30,7 +30,7 @@ export class CheckoutComponent implements OnInit {
   constructor(private cartService: CartService, private OrderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.cartService.products;
+    this.products = this.cartService.cart;
     this.calculateOrderAmount();
   }
 
@@ -45,7 +45,7 @@ export class CheckoutComponent implements OnInit {
     console.log(productId);
     this.products.forEach((product, index) => {
       if (product.productId == productId)
-        this.cartService.products.splice(index, 1);
+        this.cartService.cart.splice(index, 1);
     });
     this.calculateOrderAmount();
   }
@@ -59,7 +59,7 @@ export class CheckoutComponent implements OnInit {
       this.OrderService.createOrder(this._OrderFields).subscribe(order => {
         if(order.success){
           this._OrderFields._orderPlaced = true;
-          this.cartService.products = [];
+          this.cartService.cart = [];
           sessionStorage.clear();
           setTimeout(() => {
             this.router.navigate(['']);

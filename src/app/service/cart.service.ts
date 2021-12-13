@@ -6,7 +6,7 @@ import { Product } from '../models/Product';
 })
 export class CartService {
 
-  products: Array<Product> = [];
+  cart: Array<Product> = [];
 
   constructor() { }
 }
