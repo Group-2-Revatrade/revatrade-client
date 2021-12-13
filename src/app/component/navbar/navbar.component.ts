@@ -10,12 +10,14 @@ import { CartService } from 'src/app/service/cart.service';
 export class NavbarComponent implements OnInit, DoCheck {
 
   _productCount: number = 0;
-  
   isLoggedIn: boolean = false;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('cart') != null) {
+      this.cartService.products = JSON.parse(sessionStorage.cart);
+    }
     this._productCount = this.itemsInCart();
   }
 
@@ -26,7 +28,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   itemsInCart(): number {
     let count: number = 0;
     this.cartService.products.forEach(product => {
-      count += product.productQuantity;
+      count += product.amount;
     });
     return count;
   }
