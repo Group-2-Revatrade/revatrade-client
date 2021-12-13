@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +13,10 @@ export class JwtTestService {
 
   constructor(private http: HttpClient) {}
 
-  url: string = "http://localhost:8080/revatrade/api/testjwt";
+  url: string = environment.server+"/revatrade/api/test";
 
-  jwtTestA(): Observable<Object> {
-    console.log("JwtTestService > jwtTestA() +++++++++++");
+  jwtTest(): Observable<Object> {
+    console.log("JwtTestService > jwtTest() +++++++++++");
     return this.http.get(this.url, this.httpOptions);
   }
 }

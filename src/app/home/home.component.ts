@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 		}
   }
 
-	jwtTestA(){
-		this.jwtTestService.jwtTestA().subscribe();
+	jwtTest(){
+		this.jwtTestService.jwtTest().subscribe();
 	}
 }
