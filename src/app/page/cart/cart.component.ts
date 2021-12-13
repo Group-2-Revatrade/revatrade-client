@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/service/cart.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit {
   /* products array currently initialized for viewing purposes,  
   remove initialization, once "viewing" is complete*/
   
-  products: Array<any> = [];
+  products: Array<Product> = [];
 
   _subTotal: number = 0; // With products array example, subtotal is $55
 
@@ -27,9 +28,10 @@ export class CartComponent implements OnInit {
     this._subTotal = 0;
     this.products.forEach((product) => {
       if (product.discount == true)
-        this._subTotal += (product.productPrice * (1 - product.discountRate) * product.productQuantity);
+        this._subTotal += product.productPrice * product.amount;
+        // (product.productPrice * (1 - (product.discountRate / 100)) * product.amount);
       else
-        this._subTotal += product.productPrice * product.productQuantity;
+        this._subTotal += product.productPrice * product.amount;
     })
   }
 

@@ -15,6 +15,9 @@ import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { CartService } from './service/cart.service';
+import { UserService } from './service/user.service';
+import { ProductService } from './service/productService/product.service';
+import { OrderService } from './service/order.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import { CartService } from './service/cart.service';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [UtilService, CartService],
+  providers: [UtilService, CartService, UserService, ProductService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
