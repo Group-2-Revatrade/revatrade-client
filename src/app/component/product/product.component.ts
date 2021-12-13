@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
   addToCart(product:Product){
     //prints aout the quanity they want rn to add to the cart
     let inCart: boolean = false;
-    let cartItems: Product[] = this.cartService.products;
+    let cartItems: Product[] = this.cartService.cart;
     for(let index: number = 0; index < cartItems.length; index++) {
       if(product.productId == cartItems[index].productId) {
         cartItems[index].amount = product.amount;
@@ -47,8 +47,8 @@ export class ProductComponent implements OnInit {
       }
     }
     if(inCart == false && product.amount <= product.productQuantity) {
-      this.cartService.products.push(product);
-      sessionStorage.setItem('cart', JSON.stringify(this.cartService.products));
+      this.cartService.cart.push(product);
+      sessionStorage.setItem('cart', JSON.stringify(this.cartService.cart));
       console.log(JSON.parse(sessionStorage.cart));
     }
 

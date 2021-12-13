@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     if(sessionStorage.getItem('cart') != null) {
-      this.cartService.products = JSON.parse(sessionStorage.cart);
+      this.cartService.cart = JSON.parse(sessionStorage.cart);
     }
     this._productCount = this.itemsInCart();
   }
@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   itemsInCart(): number {
     let count: number = 0;
-    this.cartService.products.forEach(product => {
-      count += product.amount;
+    this.cartService.cart.forEach(cartItem => {
+      count += cartItem.amount;
     });
     return count;
   }
