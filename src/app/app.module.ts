@@ -31,7 +31,6 @@ import { UserService } from './service/user.service';
 import { ProductService } from './service/productService/product.service';
 import { OrderService } from './service/order.service';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from "./home/home.component";
 import { RegistrationComponent } from './component/registration/registration.component';
