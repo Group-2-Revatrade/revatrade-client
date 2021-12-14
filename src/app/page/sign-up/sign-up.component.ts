@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,7 +31,7 @@ export class SignUpComponent implements OnInit {
   _isUserCreated: boolean = false;
   _isValid: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -47,15 +48,18 @@ export class SignUpComponent implements OnInit {
           userProfileFields.aboutMe = null;
 
         this._isValid = true;
-        // Insert HTTP request here
-        console.log(userFields);
-        console.log(userProfileFields);
-        if (this._isValid) { // boolean reponse should check for successful user creation, temporarily using isValid boolean instead
-          this._isUserCreated = true;
-          setTimeout(() => {
-            this.router.navigate(['']);
-          }, 2000)
-        }
+        this.userService.createUser(this._userFields).subscribe(user => {
+          if(user.success) { 
+            this.userService.createUserProfile(this._userProfileFields, this._userFields.username).subscribe(profile => {
+              if(profile.success) {
+                this._isUserCreated = true;
+                setTimeout(() => {
+                  this.router.navigate(['/login']);
+                }, 2000);
+              }
+            })
+          }
+        });
       } else {
         this._isValid = false;
       }

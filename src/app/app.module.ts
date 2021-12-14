@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +31,16 @@ import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { CartService } from './service/cart.service';
+import { UserService } from './service/user.service';
+import { ProductService } from './service/productService/product.service';
+import { OrderService } from './service/order.service';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
+import { HomeComponent } from "./home/home.component";
+import { RegistrationComponent } from './component/registration/registration.component';
+import { LoginService } from './service/loginService/login.service';
+import { LogoutService } from './service/logoutService/logout.service';
 
 
 @NgModule({
@@ -40,7 +52,10 @@ import { CartService } from './service/cart.service';
     ProductPageComponent,
     LoginComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    HomeComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +74,11 @@ import { CartService } from './service/cart.service';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
-  providers: [UtilService, CartService],
+  providers: [UtilService, CartService, UserService, ProductService, OrderService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

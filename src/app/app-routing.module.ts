@@ -7,16 +7,16 @@ import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 
 const routes: Routes = [
-  {path: 'product', component: ProductPageComponent},
-  {path:'', redirectTo: "product", pathMatch:"full"},
-  {path: 'sign-up', component: SignUpComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'checkout', component: CheckoutComponent}
+	{path: 'product', component: ProductPageComponent},
+	{path:'', redirectTo: "product", pathMatch:"full"},
+	{path: 'sign-up', component: SignUpComponent},
+	{path: 'login', component: LoginComponent},
+	{path: 'cart', component: CartComponent},
+	{path: 'checkout', component: CheckoutComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }
