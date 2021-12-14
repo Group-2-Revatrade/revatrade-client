@@ -12,7 +12,7 @@ import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductPageComponent } from './page/product-page/product-page.component';
-//import { LoginComponent } from './page/login/login.component';
+import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { CartService } from './service/cart.service';
@@ -20,11 +20,9 @@ import { UserService } from './service/user.service';
 import { ProductService } from './service/productService/product.service';
 import { OrderService } from './service/order.service';
 
-// ----------------
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from './component/login/login.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { LoginService } from './service/loginService/login.service';
 import { LogoutService } from './service/logoutService/logout.service';
@@ -36,7 +34,7 @@ import { LogoutService } from './service/logoutService/logout.service';
     NavbarComponent,
     SignUpComponent,
     ProductPageComponent,
-    //LoginComponent,
+    LoginComponent,
     CartComponent,
     CheckoutComponent,
     HomeComponent,
