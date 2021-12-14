@@ -73,7 +73,8 @@ import { LogoutService } from './service/logoutService/logout.service';
     MatInputModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [UtilService, CartService, UserService, ProductService, OrderService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
   bootstrap: [AppComponent]
