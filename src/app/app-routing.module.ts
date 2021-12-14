@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { ProductPageComponent } from './page/product-page/product-page.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { LoginComponent } from "./page/login/login.component";
@@ -12,7 +13,9 @@ const routes: Routes = [
 	{path: 'sign-up', component: SignUpComponent},
 	{path: 'login', component: LoginComponent},
 	{path: 'cart', component: CartComponent},
-	{path: 'checkout', component: CheckoutComponent}
+	{path: 'checkout', component: CheckoutComponent},
+	// routing for profile component-logged in user's info will load view with corresponding user id path - *need child route*
+	{path: 'users', component: UserProfileComponent}
 ];
 
 @NgModule({
