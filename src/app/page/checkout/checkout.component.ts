@@ -15,9 +15,7 @@ export class CheckoutComponent implements OnInit {
 
   products: Array<any> = [];
   
-
-
-  _OrderFields: any = {
+  _orderFields: any = {
     _address: '',
     _city: '',
     _zipCode: '',
@@ -27,7 +25,7 @@ export class CheckoutComponent implements OnInit {
     _isValid: true,
   }
 
-  constructor(private cartService: CartService, private OrderService: OrderService, private router: Router) { }
+  constructor(private cartService: CartService, private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
     this.products = this.cartService.cart;
@@ -35,9 +33,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   calculateOrderAmount(): void {
-    this._OrderFields._orderAmount = 0;
+    this._orderFields._orderAmount = 0;
     this.products.forEach((product) => {
-        this._OrderFields._orderAmount += product.productPrice * product.amount;
+        this._orderFields._orderAmount += product.productPrice * product.amount;
     })
   }
 
@@ -52,20 +50,20 @@ export class CheckoutComponent implements OnInit {
 
   placeOrder(): void {
     console.log(this.products);
-    console.log(this._OrderFields._address + ", " + this._OrderFields._city + ", " + this._OrderFields._zipCode);
-    console.log(this._OrderFields._orderAmount);
-    if(this._OrderFields._address != '' && this._OrderFields._city != '' && this._OrderFields._zipCode != '') {
-      this._OrderFields._isValid = true;
-      this.OrderService.createOrder(this._OrderFields).subscribe(order => {
+    console.log(this._orderFields._address + ", " + this._orderFields._city + ", " + this._orderFields._zipCode);
+    console.log(this._orderFields._orderAmount);
+    if(this._orderFields._address != '' && this._orderFields._city != '' && this._orderFields._zipCode != '') {
+      this._orderFields._isValid = true;
+      this.orderService.createOrder(this._orderFields).subscribe(order => {
         if(order.success){
-          this._OrderFields._orderPlaced = true;
+          this._orderFields._orderPlaced = true;
           this.cartService.cart = [];
           sessionStorage.clear();
           setTimeout(() => {
             this.router.navigate(['']);
           }, 2000);
         }else{
-          this._OrderFields._isValid = false;
+          this._orderFields._isValid = false;
         }
       })
     }
