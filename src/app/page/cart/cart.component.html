@@ -1,0 +1,38 @@
+<div>
+    <form class="container border shadow rounded my-5">
+
+        <div class="h2 col-12 fw-bolder text-center my-3">Shopping Cart</div>
+        <div *ngIf="products.length == 0" class="h5 col-12 fw-bolder text-center my-5">Cart is Empty...</div>
+
+        <div *ngFor="let product of products" class="row">
+            <div class="col-4 d-flex flex-column my-3">
+                <!-- If product's picture does not exist -->
+                <i *ngIf="product.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1"></i>
+                <!-- If product's picture exists -->
+                <img *ngIf="product.productPic != null" src="{{product.productPic}}" alt="Photo of {{product.productName}}">
+            </div>
+            <div class="col-8 d-flex flex-column my-3">
+                <div class="row h5">
+                    <div class="col-6 py-2">{{product.productName}}</div>
+                    <!-- If discount rate does not exist -->
+                    <div *ngIf="!product.discount" class="col-6 py-2">{{product.productPrice | currency}}</div>
+                    <!-- If discount rate exists -->
+                    <div *ngIf="product.discount" class="col-6 py-2">{{product.productPrice | currency}}</div>
+                    <div class="col-5 d-flex justify-content-end py-2">Amount:</div>
+                    <div class="col-2 d-flex justify-content-start py-2">{{product.amount}}</div>
+                    <a class="col-5 text-danger py-2" style="cursor: pointer;" (click)="removeFromCart(product.productId)">Delete</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="offset-4 col-4 d-flex flex-column my-3 h5 text-center">
+            <div>Subtotal: {{_subTotal | currency}}</div>
+        </div>
+
+        <div class="offset-4 col-4 d-flex flex-column my-3">
+            <button type="submit" class="btn btn-success fw-bold my-3" routerLink="/checkout">Checkout</button>
+        </div>
+
+    </form>
+</div>

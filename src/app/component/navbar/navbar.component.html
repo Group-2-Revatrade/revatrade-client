@@ -1,18 +1,50 @@
+<!--<mat-toolbar color="primary">
+    REVATRADE
+    <div class="flex-stretch"></div>
+    <div class="col-6 col-md-3 d-flex"> 
+        <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+        &nbsp;
+        <span class="text-white h6">{{_productCount}}</span>
+    </div>
+    <button mat-raised-button color="accent">
+        Log In
+      </button>
+
+      <button mat-raised-button color="warn">
+        Log Out
+      </button>
+    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+    </mat-slide-toggle>
+    <mat-icon>bedtime</mat-icon>
+</mat-toolbar>-->
+
+
+    
+
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8">
+            <div class="col-6">
                 <a class="navbar-brand" routerLink="">
                     REVATRADE
                 </a>
             </div>
         </div>
-        <!-- routerLinked temporarily set to sign-up page, should be set to login page instead -->
-        <div *ngIf="!isLoggedIn" class="col-4 d-flex justify-content-end">
-            <button class="btn btn-primary fw-bold" routerLink="sign-up">Log In</button>
+        <div class="col-6 d-flex justify-content-end">
+            <div class="col-6 col-md-3 d-flex"> 
+                <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+                &nbsp;
+                <span class="text-white h6">{{_productCount}}</span>
+            </div>
+            <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
+                <button class="btn btn-primary fw-bold" routerLink="login">Log In</button>
+            </div>
+            <div *ngIf="isLoggedIn" class="col-6 col-md-3 d-flex">
+                <button class="btn btn-primary fw-bold" (click)="logout($event)">Log Out</button>
+            </div>
         </div>
-        <div *ngIf="isLoggedIn" class="col-4 d-flex justify-content-end">
-            <button class="btn btn-primary fw-bold" (click)="logout()">Log Out</button>
-        </div>
+
+        
     </div>
 </nav>
