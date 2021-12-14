@@ -5,6 +5,7 @@ import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
