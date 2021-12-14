@@ -4,7 +4,6 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 import { AppRoutingModule } from './app-routing.module';
 
-import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ProductComponent } from './component/product/product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
@@ -70,7 +69,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     MatInputModule,
     MatCheckboxModule,
     MatExpansionModule,
-    ReactiveFormsModule,
     MaterialModule
   ],
   providers: [UtilService, CartService, UserService, ProductService, OrderService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
