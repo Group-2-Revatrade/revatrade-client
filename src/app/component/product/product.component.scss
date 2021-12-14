@@ -3,7 +3,7 @@
             text-align: center;
             padding: 15px;
             text-decoration: none;
-            border: 5px solid rgb(255, 167, 4);
+            border: 5px solid #ff9800;
         }
         
         div.featuredProduct {
@@ -21,15 +21,17 @@
         }
         
         div.featured {
-            background-color: #333;
-            color: blue;
+            background-color: #474C55;
+            color: #ff9800;
             text-align: center;
             font-size: 18px;
         }
         
         div.space {
-            border: 2px solid rgb(255, 188, 4);
+            border-radius: 5px;
+            background-color: #ff9900;
             width: 100%;
+            padding: 10px;
         }
         
         div.allProduct div.producttosell {

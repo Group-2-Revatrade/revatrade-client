@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JWT_Interceptor } from './interceptors/jwt-interceptor';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import { JWT_Interceptor } from './interceptors/jwt-interceptor';
@@ -10,12 +9,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
@@ -69,7 +66,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     MatCardModule,
     MatIconModule,
     MatDialogModule,
-    FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
