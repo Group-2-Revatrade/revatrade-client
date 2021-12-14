@@ -1,0 +1,32 @@
+<div class="container-fluid" id="newUser">
+	<h1>Create Your Account</h1>
+
+	<form #accountform="ngForm">
+		<mat-form-field>
+			<mat-label>Username</mat-label>
+			<input matInput id="registration-usernameInput" placeholder="Username" type="text" [(ngModel)]="user.username" name="username" required #name="ngModel" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Password</mat-label>
+			<input matInput id="registration-passwordInput" placeholder="Password" type="text" [(ngModel)]="user.password" name="password" required #name="ngModel" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Email</mat-label>
+			<input matInput id="registration-emailInput" placeholder="Email" type="text" [(ngModel)]="user.email" name="email" required #name="ngModel" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>UserType</mat-label>
+			<mat-select id="registration-userTypeSelect" [(ngModel)]="user.userType" name="userType" #name="ngModel">
+  			<mat-option value="Customer">Customer</mat-option>
+    		<mat-option value="Vendor">Vendor</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<button mat-flat-button color="primary"  id="new-user-submit" type="submit" (click)="newUser()">
+			Submit
+		</button>
+	</form>
+</div>

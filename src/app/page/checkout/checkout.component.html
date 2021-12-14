@@ -1,0 +1,74 @@
+<div>
+    <div class="container border shadow rounded my-5">
+        <div class="h2 col-12 fw-bolder text-center my-3">
+            Shipping Address
+        </div>
+        <div>
+            <div class="offset-1 col-10 d-flex flex-column my-3">
+                <label for="address" class="form-label h6">Address</label>
+                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._address == ''}" class="form-control" type="text" placeholder="Address" [(ngModel)]='_orderFields._address' name="address" required>
+            </div>
+            <div class="offset-1 col-10 d-flex flex-column my-3">
+                <label for="city" class="form-label h6">City</label>
+                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._city == ''}" class="form-control" type="text" placeholder="City" [(ngModel)]='_orderFields._city' name="city" required>
+            </div>
+            <div class="offset-1 col-10 d-flex flex-column my-3">
+                <label for="zip code" class="form-label h6">Zip Code</label>
+                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._zipCode == ''}" class="form-control" type="text" placeholder="Zip Code" [(ngModel)]='_orderFields._zipCode' name="zip code" required>
+            </div>
+        </div>
+    </div>
+
+
+    <form class="container border shadow rounded my-5">
+        <div class="h2 col-12 fw-bolder text-center my-3">Review Items</div>
+        <div *ngIf="products.length == 0" class="h5 col-12 fw-bolder text-center my-5">Cart is Empty...</div>
+
+        <div *ngFor="let product of products" class="row">
+            <div class="col-4 d-flex flex-column my-3">
+                <!-- If product's picture does not exist -->
+                <i *ngIf="product.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1"></i>
+                <!-- If product's picture exists -->
+                <img *ngIf="product.productPic != null" src="{{product.productPic}}" alt="Photo of {{product.productName}}">
+            </div>
+            <div class="col-8 d-flex flex-column my-3">
+                <div class="row h5">
+                    <div class="col-6 py-2">{{product.productName}}</div>
+                    <!-- If discount rate does not exist -->
+                    <div *ngIf="!product.discount" class="col-6 py-2">{{product.productPrice | currency}}</div>
+                    <!-- If discount rate exists -->
+                    <div *ngIf="product.discount" class="col-6 py-2">{{product.productPrice | currency}}</div>
+                    <div class="col-5 d-flex justify-content-end py-2">Amount:</div>
+                    <div class="col-2 d-flex justify-content-start py-2">{{product.amount}}</div>
+                    <a class="col-5 text-danger py-2" style="cursor: pointer;" (click)="removeFromCart(product.productId)">Delete</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="offset-2 col-8 d-flex flex-column my-3 h5 text-center">
+            <div>Total: {{_orderFields._orderAmount | currency}}</div>
+        </div>
+
+        <div class="offset-2 col-8 d-flex flex-column my-3">
+            <div *ngIf="_orderFields._isValid == false" class="d-flex justify-content-center text-danger my-3">
+                Please fill out the fields above!
+            </div>
+            <div *ngIf="_orderFields._orderPlaced" class="text-success my-3">
+                <div>
+                    Order placed!
+                </div>
+                <div>
+                    Returning to main page...
+                </div>
+            </div>
+            <button *ngIf="_orderFields._orderPlaced == false && products.length > 0" type="submit" class="btn btn-success fw-bold my-3" (click)="placeOrder()">Place your order</button>
+            <button *ngIf="_orderFields._orderPlaced == false && products.length == 0" type="submit" class="btn btn-success fw-bold my-3" (click)="placeOrder()" disabled>Place your
+                order</button>
+            <button *ngIf="_orderFields._orderPlaced" class="btn btn-success my-3" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </button>
+        </div>
+
+    </form>
+</div>
