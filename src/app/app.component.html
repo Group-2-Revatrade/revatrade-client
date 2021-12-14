@@ -1,2 +1,21 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    REVATRADE
+    <div class="flex-stretch"></div>
+    <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+    &nbsp;
+    <span class="text-white h6">{{_productCount}}</span>
+        <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
+            <button mat-raised-button color="accent" routerLink="login">Log In</button>
+        </div>
+        <div *ngIf="isLoggedIn" class="col-6 col-md-3 d-flex">
+            <button mat-raised-button color="accent" (click)="logout()">Log In</button>
+        </div>
+        <mat-icon class="mr-8">brightness_5</mat-icon>
+        <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+        </mat-slide-toggle>
+        <mat-icon>bedtime</mat-icon>
+</mat-toolbar>
+
+<div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+    <router-outlet></router-outlet>
+</div>
