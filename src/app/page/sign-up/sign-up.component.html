@@ -49,8 +49,8 @@
             </div>
             <!-- console: C:\\fakepath\\<JPEG file name>.jpg | Revisit for S3 Bucket-->
             <div class="offset-1 col-10 d-flex flex-column my-3">
-                <label for="profilePic" class="form-label h6">Select a picture for your profile</label>
-                <input class="form-control" type="file" [(ngModel)]='_userProfileFields.profilePic' name="profilePic">
+                <label for="profilePic" class="form-label h6 text-danger">Select a picture for your profile (Disabled)</label>
+                <input class="form-control" type="file" [(ngModel)]='_userProfileFields.profilePic' name="profilePic" disabled>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
                 <label for="aboutMe" class="form-label h6">About Me</label>

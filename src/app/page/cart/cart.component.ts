@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.cartService.products;
+    this.products = this.cartService.cart;
     this.calculateSubTotal();
   }
 
@@ -29,7 +29,6 @@ export class CartComponent implements OnInit {
     this.products.forEach((product) => {
       if (product.discount == true)
         this._subTotal += product.productPrice * product.amount;
-        // (product.productPrice * (1 - (product.discountRate / 100)) * product.amount);
       else
         this._subTotal += product.productPrice * product.amount;
     })
