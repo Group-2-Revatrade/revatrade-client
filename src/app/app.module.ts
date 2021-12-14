@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JWT_Interceptor } from './interceptors/jwt-interceptor';
 
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -35,7 +34,6 @@ import { UserService } from './service/user.service';
 import { ProductService } from './service/productService/product.service';
 import { OrderService } from './service/order.service';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from "./home/home.component";
 import { RegistrationComponent } from './component/registration/registration.component';

@@ -35,11 +35,11 @@ export class AppComponent implements OnInit {
         this.overlay.getContainerElement().classList.remove(darkClassName);
       }
     });
-    this._productCount = this.cartService.products.length;
+    this._productCount = this.cartService.cart.length;
   }
 
   ngDoCheck(): void {
-    this._productCount = this.cartService.products.length;
+    this._productCount = this.cartService.cart.length;
   }
 
   logout() {
