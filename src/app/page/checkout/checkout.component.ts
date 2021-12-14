@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,15 +15,19 @@ export class CheckoutComponent implements OnInit {
 
   products: Array<any> = [];
   
-  _address: string = '';
-  _city: string = '';
-  _zipCode: string = '';
-  _orderAmount: number = 0; // With products array example, Total is $55
-  _orderDate: string = '';
-  _orderPlaced: boolean = false;
-  _isValid: boolean = true;
 
-  constructor(private cartService: CartService, private router: Router) { }
+
+  _OrderFields: any = {
+    _address: '',
+    _city: '',
+    _zipCode: '',
+    _orderAmount:  0, // With products array example, Total is $55
+    _orderDate: '',
+    _orderPlaced: false,
+    _isValid: true,
+  }
+
+  constructor(private cartService: CartService, private OrderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
     this.products = this.cartService.cart;
@@ -30,9 +35,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   calculateOrderAmount(): void {
-    this._orderAmount = 0;
+    this._OrderFields._orderAmount = 0;
     this.products.forEach((product) => {
-        this._orderAmount += product.productPrice * product.amount;
+        this._OrderFields._orderAmount += product.productPrice * product.amount;
     })
   }
 
@@ -47,21 +52,22 @@ export class CheckoutComponent implements OnInit {
 
   placeOrder(): void {
     console.log(this.products);
-    console.log(this._address + ", " + this._city + ", " + this._zipCode);
-    console.log(this._orderAmount);
-    if(this._address != '' && this._city != '' && this._zipCode != '') {
-      this._isValid = true;
-      // HTTP request goes here
-      if (true) { // To be trigger by the HTTP response body's variable
-        this._orderPlaced = true;
-        this.cartService.cart = [];
-        sessionStorage.clear();
-        setTimeout(() => {
-          this.router.navigate(['']);
-        }, 2000);
-      }
-    } else {
-      this._isValid = false;
+    console.log(this._OrderFields._address + ", " + this._OrderFields._city + ", " + this._OrderFields._zipCode);
+    console.log(this._OrderFields._orderAmount);
+    if(this._OrderFields._address != '' && this._OrderFields._city != '' && this._OrderFields._zipCode != '') {
+      this._OrderFields._isValid = true;
+      this.OrderService.createOrder(this._OrderFields).subscribe(order => {
+        if(order.success){
+          this._OrderFields._orderPlaced = true;
+          this.cartService.cart = [];
+          sessionStorage.clear();
+          setTimeout(() => {
+            this.router.navigate(['']);
+          }, 2000);
+        }else{
+          this._OrderFields._isValid = false;
+        }
+      })
     }
   }
 }
