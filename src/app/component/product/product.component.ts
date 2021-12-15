@@ -4,7 +4,6 @@ import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/productService/product.service';
 import { JwtTestService } from 'src/app/service/jwtTest.service';
 
-
 @Component({
 	selector: 'app-product',
 	templateUrl: './product.component.html',
