@@ -53,7 +53,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     CartComponent,
     CheckoutComponent,
     HomeComponent,
-    LoginComponent,
     RegistrationComponent
   ],
   imports: [
