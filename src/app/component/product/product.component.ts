@@ -3,7 +3,6 @@ import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/productService/product.service';
 import { JwtTestService } from 'src/app/service/jwtTest.service';
-import {Orders} from "../../models/Orders";
 
 
 @Component({
@@ -21,9 +20,13 @@ export class ProductComponent implements OnInit {
     this.getAllProducts();
   }
 
-  jwtTest(){
-    this.jwtTestService.jwtTest().subscribe();
-  }
+	jwtTest(){
+		this.jwtTestService.jwtTest().subscribe(
+			(data) => {
+				console.log("ProductComponent > jwtTest() > data: ", data);
+			}
+		)
+	}
 
   getAllProducts(){
     let j=0;
