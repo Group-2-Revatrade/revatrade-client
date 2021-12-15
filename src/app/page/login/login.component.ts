@@ -21,12 +21,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   login(userFields: any) {
-    if (userFields.username != '' && userFields.password) {
+    if (userFields.username != '' && userFields.password != '') {
       this._isValid = true;
-      this.userService.login(userFields).subscribe(user => {
-        if (user.success) {
+      this.userService.login(userFields).subscribe(response => {
+        if (response.success) {
+          console.log(response.message);
+          localStorage.setItem("jwt", response.message);
+          console.log(localStorage.getItem("jwt"));
           this._loginSuccess = true;
           setTimeout(() => {
             this.router.navigate(['']);
