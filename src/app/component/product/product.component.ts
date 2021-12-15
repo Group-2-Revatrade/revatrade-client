@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/productService/product.service';
+import { JwtTestService } from 'src/app/service/jwtTest.service';
 import {Orders} from "../../models/Orders";
 
 
@@ -14,16 +15,14 @@ export class ProductComponent implements OnInit {
   product:Product[]=[]
   featured:Product[]=[]
   term:String ="";
- // productId: number | undefined;  //will be used to parse data to the persistence database endpoint.
- // productName: String | undefined;
- // orderPrice: number | undefined;
-  //orderQuantity: number | undefined;
-  //userId: number | undefined;
-
-  constructor(private productService:ProductService, private cartService: CartService) { }
+  constructor(private productService:ProductService, private cartService: CartService, private jwtTestService: JwtTestService) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+  }
+
+  jwtTest(){
+    this.jwtTestService.jwtTest().subscribe();
   }
 
   getAllProducts(){
@@ -32,7 +31,7 @@ export class ProductComponent implements OnInit {
     this.productService.getAllProduct().subscribe((data)=>{
       this.product=data;
       for(let i=0;i<data.length;i++){
-        if(data[i].discount){
+        if(data[i].discount==true){
           data[i].productPrice=roundTo(data[i].productPrice*(1-data[i].discountRate/100),2);
           this.featured[j]=data[i];
           this.product[i]=data[i];
@@ -44,10 +43,9 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product:Product){
-    //prints out the quantity they want to to add to the cart
+    //prints aout the quanity they want rn to add to the cart
     let inCart: boolean = false;
     let cartItems: Product[] = this.cartService.cart;
-    this.cartService.addProductToCart(Orders[0]);
     for(let index: number = 0; index < cartItems.length; index++) {
       if(product.productId == cartItems[index].productId) {
         cartItems[index].amount = product.amount;
