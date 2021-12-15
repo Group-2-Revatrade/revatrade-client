@@ -1,17 +1,21 @@
-.mat-card{
+.mat-card {
     max-width: 300px;
+    /* center to screen */
     margin:auto;
 }
 
-.mat-card-avatar{
-    background-image: url('/assests/img/phAvi.png');
+.mat-card-avatar {
+    background-image: url('/assets/img/favicon.png');
     background-size: cover;
+    
 }
 
 .mat-card-actions {
     display: flex;
 }
 
-.mat-card-actions {
+.mat-card-actions .flex-spacer {
     width: 100%;
 }
+
+
