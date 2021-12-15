@@ -9,7 +9,7 @@ import { JwtTestService } from 'src/app/service/jwtTest.service';
 })
 export class HomeComponent implements OnInit {
 
-	loggedIn: string;
+	loggedIn: string | undefined;
 
 	constructor(private router:Router, private jwtTestService: JwtTestService) {}
 
