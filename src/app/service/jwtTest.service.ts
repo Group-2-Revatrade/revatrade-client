@@ -13,7 +13,7 @@ export class JwtTestService {
 
   constructor(private http: HttpClient) {}
 
-  url: string = environment.server+"/revatrade/api/test";
+  url: string = environment.server+"/revatrade/api/testjwt";
 
   jwtTest(): Observable<Object> {
     console.log("JwtTestService > jwtTest() +++++++++++");

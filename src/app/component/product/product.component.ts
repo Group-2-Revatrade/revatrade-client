@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/productService/product.service';
+import { JwtTestService } from 'src/app/service/jwtTest.service';
 
 
 @Component({
@@ -13,10 +14,14 @@ export class ProductComponent implements OnInit {
   product:Product[]=[]
   featured:Product[]=[]
   term:String ="";
-  constructor(private productService:ProductService, private cartService: CartService) { }
+  constructor(private productService:ProductService, private cartService: CartService, private jwtTestService: JwtTestService) { }
   
   ngOnInit(): void {
     this.getAllProducts();
+  }
+
+  jwtTest(){
+    this.jwtTestService.jwtTest().subscribe();
   }
 
   getAllProducts(){
