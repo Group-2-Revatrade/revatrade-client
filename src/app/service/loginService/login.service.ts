@@ -10,7 +10,7 @@ import { loginObj } from '../../models/loginObj';
 })
 export class LoginService {
   private url:String = environment.server.toString() + "/revatrade/jwt";
-  private currentUserSubject: BehaviorSubject<loginObj>;
+  // private currentUserSubject: BehaviorSubject<loginObj>;
 
   constructor(private http:HttpClient) {}
 

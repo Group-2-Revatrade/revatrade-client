@@ -19,6 +19,10 @@ export class UserService {
     return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/revatrade/api/users/${username}/profile/create`, userProfile);
   }
 
+  login(userFields: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/revatrade/jwt/login`, userFields);
+  }
+
   logout() {
     sessionStorage.clear();
     this.router.navigateByUrl('');

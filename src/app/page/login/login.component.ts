@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,40 +12,44 @@ export class LoginComponent implements OnInit {
   _userFields: any = {
     username: '',
     password: ''
-}
+  }
 
   _isValid: boolean = true;
   _loginSuccess: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
-
-  login(userFields: any){
-    if(this.isUser(userFields.username, userFields.password)){
-        this._isValid = true;
-        this._loginSuccess = true;
-        setTimeout(() => {
-          this.router.navigate(['']);
-        }, 2000)
-      }
-    else{
+  
+  login(userFields: any) {
+    if (userFields.username != '' && userFields.password) {
+      this._isValid = true;
+      this.userService.login(userFields).subscribe(user => {
+        if (user.success) {
+          this._loginSuccess = true;
+          setTimeout(() => {
+            this.router.navigate(['']);
+          }, 2000);
+        }
+      })
+    } else {
       this.resetFields();
       this._isValid = false;
     }
   }
 
-  isUser(username: any, password: any) : boolean{
+
+  isUser(username: any, password: any): boolean {
     // Placeholder for when connection to DB is established
     // Boolean should check DB for corresponding username and password and return true if found
-    if(username == "revatrade" && password == "revatrade"){
+    if (username == "revatrade" && password == "revatrade") {
       return true;
     }
     return false;
   }
 
-  resetFields(){
+  resetFields() {
     this._userFields.username = '';
     this._userFields.password = '';
   }
