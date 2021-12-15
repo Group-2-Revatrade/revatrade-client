@@ -16,7 +16,6 @@ export class JwtTestService {
   url: string = environment.server+"/revatrade/api/testjwt";
 
   jwtTest(): Observable<Object> {
-    console.log("JwtTestService > jwtTest() +++++++++++");
     return this.httpClient.get(this.url, this.httpOptions) as Observable<any>;
   }
 }
