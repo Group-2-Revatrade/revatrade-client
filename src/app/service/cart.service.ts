@@ -3,6 +3,7 @@ import { Product } from '../models/Product';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {UtilService} from "./util.service";
 import {Orders} from "../models/Orders";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,8 @@ export class CartService {
     return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/cart/search?userId=${userId}`)
   }
 
-  addProductToCart(productId: number | undefined, productName: String | undefined, orderPrice: number | undefined, orderQuantity: number | undefined, userId: number | undefined){
-    return this.httpClient.get<Product[]>(`${this.utilService.getServerDomain()}/revatrade/cart/new?productId${productId},productName=${productName},orderPrice=${orderPrice},orderQuantity=${orderQuantity},userId=${userId}`)
+  addProductToCart(order: Orders){
+    return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`, order)
   }
-
 
 }
