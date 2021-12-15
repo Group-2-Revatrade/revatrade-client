@@ -6,7 +6,8 @@
             <ul>
                 <div class="productName"><h1>{{f.productName}}</h1></div>
                 <div>{{f.discountRate}}% Discount!</div>
-                <img class="displaypic" src="{{f.productPic}}">
+                <i *ngIf="f.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1 displaypic"></i>
+                <img *ngIf="f.productPic != null" class="displaypic" src="{{f.productPic}}">
                 <div class="productPrice">{{f.productPrice | currency:"USD"}}</div>
                 <div>
                     <button class="addToCartButton" mat-raised-button (click)="addToCart(f)">Add to Cart</button>
@@ -36,7 +37,8 @@
         <div class="space">
             <td class="pic">
                 <div class="productName"><h1>{{p.productName}}</h1></div>
-                <img id="productPic" class="displaypic" src="{{p.productPic}}"></td>
+                <i *ngIf="p.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1 displaypic"></i>
+                <img *ngIf="p.productPic != null" id="productPic" class="displaypic" src="{{p.productPic}}"></td>
 
             <td class="items">
 
