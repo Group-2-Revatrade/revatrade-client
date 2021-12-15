@@ -13,6 +13,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor() { }
 
+  // on init pass an array of all users
   ngOnInit(): void {
   }
 
