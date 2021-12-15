@@ -9,32 +9,15 @@ import { CheckoutComponent } from './page/checkout/checkout.component';
 import { OrderDetailsComponent } from './page/order-details/order-details.component';
 
 const routes: Routes = [
-<<<<<<< HEAD
-  {
-    path: 'sign-up', 
-    component: SignUpComponent
-  },
-  {
-    // routing for profile component-logged in user's info will load view with corresponding user id path - *need child route*
-    path: 'users',
-    component: UserProfileComponent
-  },
-
-=======
->>>>>>> developer
 	{path: 'product', component: ProductPageComponent},
 	{path:'', redirectTo: "product", pathMatch:"full"},
 	{path: 'sign-up', component: SignUpComponent},
 	{path: 'login', component: LoginComponent},
 	{path: 'cart', component: CartComponent},
-<<<<<<< HEAD
-	{path: 'checkout', component: CheckoutComponent}
-=======
 	{path: 'checkout', component: CheckoutComponent},
 	// routing for profile component-logged in user's info will load view with corresponding user id path - *need child route*
 	{path: 'users', component: UserProfileComponent},
 	{path: 'order-details', component: OrderDetailsComponent}
->>>>>>> developer
 ];
 
 @NgModule({

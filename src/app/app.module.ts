@@ -24,13 +24,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { UtilService } from './service/util.service';
-<<<<<<< HEAD
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule} from '@angular/material/button';  
-import { MatFormFieldModule } from '@angular/material/form-field';
-=======
->>>>>>> developer
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { ProductPageComponent } from './page/product-page/product-page.component';
 import { LoginComponent } from './page/login/login.component';
@@ -46,19 +39,10 @@ import { HomeComponent } from "./home/home.component";
 import { RegistrationComponent } from './component/registration/registration.component';
 import { LoginService } from './service/loginService/login.service';
 import { LogoutService } from './service/logoutService/logout.service';
-<<<<<<< HEAD
-=======
-
->>>>>>> developer
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    NavbarComponent, 
-    SignUpComponent,
-=======
->>>>>>> developer
     UserProfileComponent,
     ProductComponent,
     NavbarComponent,
@@ -76,15 +60,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-<<<<<<< HEAD
-
-    MatFormFieldModule,
-    MatCardModule,
-    MatButtonModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-=======
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSlideToggleModule,
@@ -99,7 +74,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     MatExpansionModule,
     MaterialModule,
     FlexLayoutModule
->>>>>>> developer
   ],
   providers: [UtilService, CartService, UserService, ProductService, OrderService, HttpClient, LoginService, LogoutService, { provide: HTTP_INTERCEPTORS, useClass: JWT_Interceptor, multi: true}],
   bootstrap: [AppComponent]
