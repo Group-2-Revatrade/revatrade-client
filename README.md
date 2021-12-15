@@ -1,27 +1,45 @@
-# RevatradeClient
+# Revatrade-server
+E-Commerce server
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
+## About
+This repository contains all of the client side code used for deployment of the *Revatrade* E-Commerce application. The application utilizes the Spring framework to run / maintain the site and employs an H2 database for storing products and user data. Consisting of 3 main features that can be found in most E-Commerce sites, the *Revatrade* site allows users
+to make a profile, view products listed, and add said products to their personal cart (the users can also checkout the items in the cart). 
 
-## Development server
+To view the back end of this application, go the *Github* link listed:
+https://github.com/Group-2-Revatrade/revatrade-server/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Table of Contents
+ - [About](#About)
+ - [Technologies Used](#Technologies-Used)
+ - [Teams](#Teams)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
+* Java 1.8
+* Spring Framework
+    - Spring Boot
+    - Spring Security
+    - Spring Milestones
+    - Spring Snapshots
+* H2 Database
+* Postgresql
+* Project Lombok
+* JUnit
+* Auth0
+* JSON webtoken
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Teams
+### Order Team
+  | Name | Mathew Alston | Chris Dixon | Nattee Setobol | Jason Lam | Ellis Delgado | Leonard Nganga |
+  |------| --------- |  --------- |  --------- | --------- | --------- | --------- | 
+  | Role |    Team Lead  |   Back End  |  Back End      | Back End   |  Front End   | Back End    |
+  
+### User Team
+  | Name | Anthony Veronda | Yungdrung Gurung| Alex Smith | Gabriel Gil| Sean Hopkins | Leonard Nganga | Edwin Munoz |
+  |------| ---------      |  ---------       |  --------- | --------- | --------- | --------- | --------- | 
+  | Role |    Team Lead  |   Back End       |  Back End    | Front End   |  Front End   | Back End    | Front End   | 
+  
+### Product Team
+  | Name | Nikola Derek | Chris Amihan | Ethan Wiley | Jonathan Powers | Carolina Ferraz | Naresh Gurung | Chase Jones |
+  |------| ---------   |  ---------  |  --------- | --------- | --------- | --------- | --------- | 
+  | Role |    Team Lead  |   Front End  |  Front End   | Back End   |  Front End/Back End    | Back End    | Front End/Back End    | 
