@@ -17,11 +17,20 @@ export class CartComponent implements OnInit {
 
   _subTotal: number = 0; // With products array example, subtotal is $55
 
+  _isLoggedIn: boolean = false;
+
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this._isLoggedIn == false) {
+      this.checkingCredentials();
+      }
     this.products = this.cartService.cart;
     this.calculateSubTotal();
+  }
+
+  checkingCredentials() {
+    localStorage.getItem("Revatrade-LocalStorageLocation") != null ? this._isLoggedIn = true : this._isLoggedIn = false;
   }
 
   calculateSubTotal(): void {
