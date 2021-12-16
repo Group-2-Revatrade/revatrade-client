@@ -18,9 +18,9 @@ export class LoginService {
     .pipe(
       map(response => {
         if(response.success) {
-          this.utilService.setHeaders();
           localStorage.setItem("userId", response.data);
           localStorage.setItem('Revatrade-LocalStorageLocation', response.message);
+          this.utilService.setHeaders();
           return true;
         }
         else return false;
