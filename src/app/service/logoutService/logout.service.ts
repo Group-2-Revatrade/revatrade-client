@@ -11,6 +11,6 @@ export class LogoutService {
 
 	logout(){
 		this.isloggedIn = false;
-		localStorage.removeItem('Revatrade-LocalStorageLocation');
+		localStorage.clear();
 	}
 }

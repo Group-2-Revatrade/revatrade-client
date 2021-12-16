@@ -8,7 +8,8 @@ export class UtilService {
 
   private _serverDomain: string = 'http://localhost:8088';
 
-  jwt: any = sessionStorage.getItem('JWT');
+  // For next iteration utilize cookies for better security
+  jwt: any = localStorage.getItem('Revatrade-LocalStorageLocation');
   headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*').set('authorization', this.jwt);
   
   constructor() { }
@@ -18,7 +19,7 @@ export class UtilService {
   }
 
   public setHeaders(): void {
-    this.jwt = sessionStorage.getItem('JWT');
+    this.jwt = localStorage.getItem('Revatrade-LocalStorageLocation');
     this.headers = new HttpHeaders().set('content-type', 'application/json').set('Access-Control-Allow-Origin', '*').set('authorization', this.jwt);
   }
 }

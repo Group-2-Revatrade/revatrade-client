@@ -16,8 +16,8 @@ const routes: Routes = [
 	{path: 'cart', component: CartComponent},
 	{path: 'checkout', component: CheckoutComponent},
 	// routing for profile component-logged in user's info will load view with corresponding user id path - *need child route*
-	{path: 'users', component: UserProfileComponent},
-	{path: 'order-details', component: OrderDetailsComponent},
+	{path: 'profile/:userId', component: UserProfileComponent},
+	{path: 'order-details', component: OrderDetailsComponent}
 ];
 
 @NgModule({

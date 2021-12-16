@@ -20,46 +20,35 @@ export class LoginComponent implements OnInit {
 	constructor(private router: Router, private loginService: LoginService) { }
 
 	ngOnInit(): void {
+    // nav Login button should toggle visibility on jwt/login status
+    if (localStorage.getItem("Revatrade-LocalStorageLocation") !== null) {
+      alert("You are already logged in!");
+      this.router.navigate(['']);
+    }
 	}
 
 	login(userFields: any){
-		if (localStorage.getItem("Revatrade-LocalStorageLocation") === null && !this.isUser(userFields.username, userFields.password)) {
-			this.loginService
-				.login(userFields.username, userFields.password)
-				.subscribe(user => {
-					this.router.navigate(['']);
+		if (this.isEmpty(userFields.username, userFields.password)) {
+			this.loginService.login(userFields.username, userFields.password).subscribe(response => {
+          if(response) {
+            this._isValid = true;
+            this._loginSuccess = true;
+            setTimeout(() => {
+              this.router.navigate(['']);
+            }, 2000)
+          } else {
+            this.resetFields();
+            this._isValid = false;      
+          }
 				});
 		} else {
 			this.resetFields();
 			this._isValid = false;
-			// nav Login button should toggle visibility on jwt/login status
-			if (localStorage.getItem("Revatrade-LocalStorageLocation") !== null) {
-				alert("You are already logged in!");
-				this.router.navigate(['']);
-			} else if (this.isUser(userFields.username, userFields.password)) {
-				alert("Please complete login form");
-			}
 		}
 	}
 
-	//  login(userFields: any){
-	//    if(this.isUser(userFields.username, userFields.password)){
-	//        this._isValid = true;
-	//        this._loginSuccess = true;
-	//        setTimeout(() => {
-	//          this.router.navigate(['']);
-	//        }, 2000)
-	//      }
-	//    else{
-	//      this.resetFields();
-	//      this._isValid = false;
-	//    }
-	//  }
-
-	isUser(username: any, password: any) : boolean{
-		// Placeholder for when connection to DB is established
-		// Boolean should check DB for corresponding username and password and return true if found
-		if(username == "" || password == ""){
+	isEmpty(username: any, password: any) : boolean{
+		if(username != "" && password != ""){
 			return true;
 		}
 		return false;

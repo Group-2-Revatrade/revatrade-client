@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/order.service';
@@ -15,27 +15,41 @@ export class CheckoutComponent implements OnInit {
 
   products: Array<any> = [];
   
-  _orderFields: any = {
-    _address: '',
-    _city: '',
-    _zipCode: '',
-    _orderAmount:  0, // With products array example, Total is $55
-    _orderDate: '',
-    _orderPlaced: false,
-    _isValid: true,
-  }
+  _address: string = '';
+  _city: string = '';
+  _zipCode: string = '';
+  _orderAmount: number = 0; // With products array example, Total is $55
+
+  _orderPlaced: boolean = false;
+  _isValid: boolean = true;
+
+  userId: number = 0;
 
   constructor(private cartService: CartService, private orderService: OrderService, private router: Router) { }
-
+  
   ngOnInit(): void {
+    if (this.userId == 0) {
+      this.checkingCredentials();
+      if(this.userId == 0) {
+        this.router.navigate(['login']);
+      }
+    }
+    
     this.products = this.cartService.cart;
     this.calculateOrderAmount();
   }
 
+  checkingCredentials() {
+    if (localStorage.getItem("userId")) {
+      let temp: any = localStorage.getItem("userId");
+      this.userId = parseInt(temp);
+    }
+  }
+
   calculateOrderAmount(): void {
-    this._orderFields._orderAmount = 0;
+    this._orderAmount = 0;
     this.products.forEach((product) => {
-        this._orderFields._orderAmount += product.productPrice * product.amount;
+        this._orderAmount += product.productPrice * product.amount;
     })
   }
 
@@ -49,23 +63,35 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder(): void {
-    console.log(this.products);
-    console.log(this._orderFields._address + ", " + this._orderFields._city + ", " + this._orderFields._zipCode);
-    console.log(this._orderFields._orderAmount);
-    if(this._orderFields._address != '' && this._orderFields._city != '' && this._orderFields._zipCode != '') {
-      this._orderFields._isValid = true;
-      this.orderService.createOrder(this._orderFields).subscribe(order => {
-        if(order.success){
-          this._orderFields._orderPlaced = true;
-          this.cartService.cart = [];
-          sessionStorage.clear();
-          setTimeout(() => {
-            this.router.navigate(['']);
-          }, 2000);
-        }else{
-          this._orderFields._isValid = false;
+    
+    // Fields must not be empty
+    if (this._address != "" && this._city != "" && this._zipCode != "") {
+      this._isValid = true;
+      // Request to place order
+      let parseZipCode: number = parseInt(this._zipCode);
+      this.orderService.createOrder(this._address, this._city, parseZipCode, this._orderAmount).subscribe(order => {
+        if(order.success) {
+          // Iterate through the cart to include the details of the order
+          let counter: number = 0;
+          this.products.forEach(product => {
+            // Product price already accounts for discounts if any
+            this.orderService.createOrderDetails(order.data.orderId, product.productId, product.productPrice, product.amount);
+            counter++;
+          });
+          if(counter == this.products.length) {
+            this._orderPlaced = true;
+            this.cartService.cart = [];
+            sessionStorage.clear();
+            setTimeout(() => {
+              this.router.navigate(['']);
+            }, 2000);
+          }          
+        } else {
+          this._isValid = false;
         }
       })
+    } else {
+      this._isValid = false;
     }
   }
 }

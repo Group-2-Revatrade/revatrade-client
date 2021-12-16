@@ -1,27 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { loginObj } from '../../models/loginObj';
+import { UtilService } from '../util.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LoginService {
 	private url:String = environment.server.toString() + "/revatrade/jwt";
-	// private currentUserSubject: BehaviorSubject<loginObj>;
 
-	constructor(private http:HttpClient) {}
+	constructor(private http:HttpClient, private utilService: UtilService) {}
 
 	login(username: string, password: string): Observable<any> {
 		return this.http.post<any>(this.url + `/login`, { username, password })
     .pipe(
-      map(user => {
-        if (user){
-          return localStorage.setItem('Revatrade-LocalStorageLocation', user.jwt);
+      map(response => {
+        if(response.success) {
+          localStorage.setItem("userId", response.data);
+          localStorage.setItem('Revatrade-LocalStorageLocation', response.message);
+          this.utilService.setHeaders();
+          return true;
         }
-        return null;
+        else return false;
       })
     );
 	}
