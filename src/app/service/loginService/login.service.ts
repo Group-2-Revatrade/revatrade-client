@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { loginObj } from '../../models/loginObj';
+import { JsonResponse } from '../../models/JsonResponse';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,8 +15,8 @@ export class LoginService {
 
 	constructor(private http:HttpClient) {}
 
-	login(username: string, password: string): Observable<any> {
-		return this.http.post<any>(this.url + `/login`, { username, password })
+	login(username: string, password: string): Observable<void> {
+		return this.http.post<JsonResponse>(this.url + `/login`, { username, password })
 			.pipe(
 				map(user => {
 					return localStorage.setItem('Revatrade-LocalStorageLocation', user.message);
