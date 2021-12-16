@@ -6,15 +6,15 @@
         <div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
                 <label for="address" class="form-label h6">Address</label>
-                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._address == ''}" class="form-control" type="text" placeholder="Address" [(ngModel)]='_orderFields._address' name="address" required>
+                <input [ngClass]="{'border border-danger': !_isValid && _address == ''}" class="form-control" type="text" placeholder="Address" [(ngModel)]='_address' name="address" required>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
                 <label for="city" class="form-label h6">City</label>
-                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._city == ''}" class="form-control" type="text" placeholder="City" [(ngModel)]='_orderFields._city' name="city" required>
+                <input [ngClass]="{'border border-danger': _isValid == false && _city == ''}" class="form-control" type="text" placeholder="City" [(ngModel)]='_city' name="city" required>
             </div>
             <div class="offset-1 col-10 d-flex flex-column my-3">
                 <label for="zip code" class="form-label h6">Zip Code</label>
-                <input [ngClass]="{'border border-danger': _orderFields._isValid == false && _orderFields._zipCode == ''}" class="form-control" type="text" placeholder="Zip Code" [(ngModel)]='_orderFields._zipCode' name="zip code" required>
+                <input [ngClass]="{'border border-danger': _isValid == false && _zipCode == ''}" class="form-control" type="text" placeholder="Zip Code" [(ngModel)]='_zipCode' name="zip code" required>
             </div>
         </div>
     </div>
@@ -47,14 +47,14 @@
         </div>
 
         <div class="offset-2 col-8 d-flex flex-column my-3 h5 text-center">
-            <div>Total: {{_orderFields._orderAmount | currency}}</div>
+            <div>Total: {{_orderAmount | currency}}</div>
         </div>
 
         <div class="offset-2 col-8 d-flex flex-column my-3">
-            <div *ngIf="_orderFields._isValid == false" class="d-flex justify-content-center text-danger my-3">
+            <div *ngIf="_isValid == false" class="d-flex justify-content-center text-danger my-3">
                 Please fill out the fields above!
             </div>
-            <div *ngIf="_orderFields._orderPlaced" class="text-success my-3">
+            <div *ngIf="_orderPlaced" class="text-success my-3">
                 <div>
                     Order placed!
                 </div>
@@ -62,10 +62,10 @@
                     Returning to main page...
                 </div>
             </div>
-            <button *ngIf="_orderFields._orderPlaced == false && products.length > 0" type="submit" class="btn btn-success fw-bold my-3" (click)="placeOrder()">Place your order</button>
-            <button *ngIf="_orderFields._orderPlaced == false && products.length == 0" type="submit" class="btn btn-success fw-bold my-3" (click)="placeOrder()" disabled>Place your
+            <button *ngIf="_orderPlaced == false && products.length > 0" type="submit" class="btn btn-success fw-bold my-3" (click)="placeOrder()">Place your order</button>
+            <button *ngIf="_orderPlaced == false && products.length == 0" type="submit" class="btn btn-success fw-bold my-3" disabled>Place your
                 order</button>
-            <button *ngIf="_orderFields._orderPlaced" class="btn btn-success my-3" disabled>
+            <button *ngIf="_orderPlaced" class="btn btn-success my-3" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </button>
         </div>
