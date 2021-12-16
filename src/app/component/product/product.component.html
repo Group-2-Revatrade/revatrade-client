@@ -4,9 +4,9 @@
   </p>
 </div>
 
-<div class="featured">
-    <a style="margin-bottom: 0.5rem;">Featured Sales</a>
-    <div class="featuredProduct">
+<mat-card class="featured">
+    <mat-card-title>Featured Products</mat-card-title>
+    <mat-card class="featuredProduct" fxLayout="row">
 
         <tr *ngFor="let f of featured">
             <ul>
@@ -24,8 +24,8 @@
                 </div>
             </ul>
         </tr>
-    </div>
-</div>
+    </mat-card>
+</mat-card>
 
 <div class="search">
     <mat-form-field appearance="fill" class="searchBar">
