@@ -1,19 +1,27 @@
 <mat-toolbar color="primary">
-    REVATRADE
-    <div class="flex-stretch"></div>
-    <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+
+    <div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="20px">
+    <h2 class="logo">REVATRADE</h2>
+        <div fxLayout="row">
+            <mat-icon>brightness_5</mat-icon>
+            <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+            </mat-slide-toggle>
+            <mat-icon>bedtime</mat-icon>
+        </div>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs fxLayoutGap="5px">
+        <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
     &nbsp;
     <span class="text-white h6">{{_productCount}}</span>
-        <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
+        <div *ngIf="!isLoggedIn">
             <button mat-raised-button color="accent" routerLink="login">Log In</button>
         </div>
-        <div *ngIf="isLoggedIn" class="col-6 col-md-3 d-flex">
-            <button mat-raised-button color="accent" (click)="logout()">Log In</button>
+        <div *ngIf="isLoggedIn">
+            <button mat-raised-button color="accent" (click)="logout()">Log Out</button>
         </div>
-        <mat-icon class="mr-8">brightness_5</mat-icon>
-        <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
-        </mat-slide-toggle>
-        <mat-icon>bedtime</mat-icon>
+        
+    </div>
 </mat-toolbar>
 
 <div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="16px">
