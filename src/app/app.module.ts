@@ -40,7 +40,6 @@ import { RegistrationComponent } from './component/registration/registration.com
 import { LoginService } from './service/loginService/login.service';
 import { LogoutService } from './service/logoutService/logout.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,6 @@ import { LogoutService } from './service/logoutService/logout.service';
     CartComponent,
     CheckoutComponent,
     HomeComponent,
-    LoginComponent,
     RegistrationComponent
   ],
   imports: [

@@ -11,12 +11,11 @@ export class JwtTestService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
-  url: string = environment.server+"/revatrade/api/test";
+  url: string = environment.server+"/revatrade/api/testjwt";
 
   jwtTest(): Observable<Object> {
-    console.log("JwtTestService > jwtTest() +++++++++++");
-    return this.http.get(this.url, this.httpOptions);
+    return this.httpClient.get(this.url, this.httpOptions) as Observable<any>;
   }
 }
