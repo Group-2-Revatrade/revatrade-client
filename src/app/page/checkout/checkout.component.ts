@@ -23,14 +23,14 @@ export class CheckoutComponent implements OnInit {
   _orderPlaced: boolean = false;
   _isValid: boolean = true;
 
-  userId: any = null;
+  userId: number = 0;
 
   constructor(private cartService: CartService, private orderService: OrderService, private router: Router) { }
   
   ngOnInit(): void {
-    if (this.userId == null) {
+    if (this.userId == 0) {
       this.checkingCredentials();
-      if(this.userId == null) {
+      if(this.userId == 0) {
         this.router.navigate(['login']);
       }
     }
