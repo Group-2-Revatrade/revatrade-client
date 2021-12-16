@@ -1,50 +1,25 @@
-<!--<mat-toolbar color="primary">
-    REVATRADE
-    <div class="flex-stretch"></div>
-    <div class="col-6 col-md-3 d-flex"> 
+<!-- <mat-toolbar color="primary">
+
+    <div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="20px">
+        <h2 class="logo" style="cursor: pointer;" routerLink="">REVATRADE</h2>
+        <div fxLayout="row">
+            <mat-icon>brightness_5</mat-icon>
+            <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+            </mat-slide-toggle>
+            <mat-icon>bedtime</mat-icon>
+        </div>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs fxLayoutGap="5px">
         <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
         &nbsp;
         <span class="text-white h6">{{_productCount}}</span>
-    </div>
-    <button mat-raised-button color="accent">
-        Log In
-      </button>
-
-      <button mat-raised-button color="warn">
-        Log Out
-      </button>
-    <mat-icon class="mr-8">brightness_5</mat-icon>
-    <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
-    </mat-slide-toggle>
-    <mat-icon>bedtime</mat-icon>
-</mat-toolbar>-->
-
-
-    
-
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6">
-                <a class="navbar-brand" routerLink="">
-                    REVATRADE
-                </a>
-            </div>
+        <div *ngIf="!isLoggedIn">
+            <button mat-raised-button color="accent" routerLink="login">Log In</button>
         </div>
-        <div class="col-6 d-flex justify-content-end">
-            <div class="col-6 col-md-3 d-flex"> 
-                <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
-                &nbsp;
-                <span class="text-white h6">{{_productCount}}</span>
-            </div>
-            <div *ngIf="!isLoggedIn" class="col-6 col-md-3 d-flex">
-                <button class="btn btn-primary fw-bold" routerLink="login">Log In</button>
-            </div>
-            <div *ngIf="isLoggedIn" class="col-6 col-md-3 d-flex">
-                <button class="btn btn-primary fw-bold" (click)="logout($event)">Log Out</button>
-            </div>
+        <div *ngIf="isLoggedIn">
+            <button mat-raised-button color="accent" (click)="logout()">Log Out</button>
         </div>
 
-        
     </div>
-</nav>
+</mat-toolbar> -->
