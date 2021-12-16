@@ -10,18 +10,17 @@
         </div>
     </div>
 
-    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs fxLayoutGap="5px">
-        <a class="text-decoration-none" [routerLink]="['/profile', _userId]">UserProfile</a>
-        <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
-    &nbsp;
-    <span class="text-white h6">{{_productCount}}</span>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs fxLayoutGap="10px">
         <div *ngIf="!isLoggedIn">
-            <button mat-raised-button color="accent" routerLink="login">Log In</button>
+            <a class="text-decoration-none" routerLink="login">LOGIN</a>
         </div>
         <div *ngIf="isLoggedIn">
-            <button mat-raised-button color="accent" (click)="logout()">Log Out</button>
+            <a class="text-decoration-none" color="accent" (click)="logout()">LOGOUT</a>
         </div>
-        
+        <a class="text-decoration-none" [routerLink]="['/profile', _userId]">PROFILE</a>
+        <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
+        &nbsp;
+        <span class="text-white h6">{{_productCount}}</span>
     </div>
 </mat-toolbar>
 
