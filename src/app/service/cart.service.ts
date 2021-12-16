@@ -18,15 +18,15 @@ export class CartService {
 
   getMyOrders(userId:number){
     console.log("Data Retrieval in progress.....");
-    return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/cart/search?userId=${userId}`)
+    return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/cart/search?userId=${userId}`);
   }
 
   getProductData(productId:number){
-    return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/products/search/byId?productId=${productId}`)
+    return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/products/search/byId?productId=${productId}`);
   }
 
   addProductToCart(order: Product){
-    return this.httpClient.post<Orders>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`,order)
+    return this.httpClient.post<Orders>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`,order);
   }
 
 }

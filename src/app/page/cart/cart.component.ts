@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   /* products array currently initialized for viewing purposes,
   remove initialization, once "viewing" is complete*/
 
-  myOrders: Orders[] = [];
+  myOrders: Array<Orders> = [];
   //orders: Orders[] = [];
   products: Product[] =[];
   _subTotal: number = 0; // With products array example, subtotal is $55
@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
       console.log("Retrieving all orders for userID = " + userId + " from the database" )
       this.cartService.getMyOrders(userId).subscribe((data) => {
         this.myOrders = data;
-        this.getProductData();
+        //this.getProductData();
         console.table(this.myOrders);
         this.dbTotal += data.length;  //total Items in the cart
       });
