@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
 
 	getAllProducts(){
 		let j=0;
-		console.log("what")
+		
 		this.productService.getAllProduct().subscribe((data)=>{
 			this.product=data;
 			for(let i=0;i<data.length;i++){
@@ -41,7 +41,7 @@ export class ProductComponent implements OnInit {
 				}
 			}
 		});
-		console.log("got products");
+		
 	}
 	
 	addToCart(product:Product){
