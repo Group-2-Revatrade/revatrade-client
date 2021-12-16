@@ -24,6 +24,8 @@ export class AppComponent implements OnInit, DoCheck {
   
   isLoggedIn: boolean = false;
 
+  _userId: number = 0;
+
   constructor(private cartService: CartService, private logoutService: LogoutService, private router: Router, private dialog:MatDialog, private overlay: OverlayContainer) { }
 
   ngOnInit(): void {
@@ -61,6 +63,10 @@ export class AppComponent implements OnInit, DoCheck {
 
   checkCredentials() {
     localStorage.getItem("Revatrade-LocalStorageLocation") != null ? this.isLoggedIn = true : this.isLoggedIn = false;
+    if (localStorage.getItem("userId")) {
+      let temp: any = localStorage.getItem("userId");
+      this._userId = parseInt(temp);
+    }
   }
 
   logout() {
