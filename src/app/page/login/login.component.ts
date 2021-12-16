@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 	login(userFields: any){
 		if (this.isEmpty(userFields.username, userFields.password)) {
 			this.loginService.login(userFields.username, userFields.password).subscribe(response => {
-          console.log(response);
           if(response) {
             this._isValid = true;
             this._loginSuccess = true;
