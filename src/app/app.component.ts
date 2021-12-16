@@ -71,6 +71,7 @@ export class AppComponent implements OnInit, DoCheck {
 
   logout() {
     this.logoutService.logout();
+    this._userId = 0;
     this.isLoggedIn = false;
     alert("User successfully logged out!");
   }

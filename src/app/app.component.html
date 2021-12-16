@@ -15,9 +15,9 @@
             <a class="text-decoration-none" routerLink="login">LOGIN</a>
         </div>
         <div *ngIf="isLoggedIn">
-            <a class="text-decoration-none" color="accent" (click)="logout()">LOGOUT</a>
+            <a class="text-decoration-none" style="cursor: pointer;" color="accent" (click)="logout()">LOGOUT</a>
         </div>
-        <a class="text-decoration-none" [routerLink]="['/profile', _userId]">PROFILE</a>
+        <a *ngIf="isLoggedIn" class="text-decoration-none" [routerLink]="['/profile', _userId]">PROFILE</a>
         <i class="fas fa-shopping-cart text-white display-6" routerLink="cart" style="cursor: pointer;"></i>
         &nbsp;
         <span class="text-white h6">{{_productCount}}</span>
