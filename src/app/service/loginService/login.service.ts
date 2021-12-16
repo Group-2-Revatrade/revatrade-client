@@ -16,13 +16,14 @@ export class LoginService {
 	login(username: string, password: string): Observable<any> {
 		return this.http.post<any>(this.url + `/login`, { username, password })
     .pipe(
-      map(user => {
-        if (user){
+      map(response => {
+        if(response.success) {
           this.utilService.setHeaders();
-          localStorage.setItem("userId", user.data);
-          return localStorage.setItem('Revatrade-LocalStorageLocation', user.message);
+          localStorage.setItem("userId", response.data);
+          localStorage.setItem('Revatrade-LocalStorageLocation', response.message);
+          return true;
         }
-        return null;
+        else return false;
       })
     );
 	}
