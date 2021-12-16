@@ -18,10 +18,7 @@ export class LoginService {
 		return this.http.post<any>(this.url + `/login`, { username, password })
 			.pipe(
 				map(user => {
-					if (user){
-						return localStorage.setItem('Revatrade-LocalStorageLocation', user.jwt);
-					}
-					return null;
+					return localStorage.setItem('Revatrade-LocalStorageLocation', user.message);
 				})
 			);
 	}

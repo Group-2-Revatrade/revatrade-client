@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 		if (localStorage.getItem("Revatrade-LocalStorageLocation") === null && !this.isUser(userFields.username, userFields.password)) {
 			this.loginService
 				.login(userFields.username, userFields.password)
-				.subscribe(user => {
+				.subscribe(() => {
 					this.router.navigate(['']);
 				});
 		} else {
