@@ -25,8 +25,8 @@ export class CartService {
     return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/products/search/byId?productId=${productId}`)
   }
 
-  addProductToCart(order: Orders){
-    return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`, order)
+  addProductToCart(order: Product){
+    return this.httpClient.post<Orders>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`,order)
   }
 
 }
