@@ -23,9 +23,13 @@ export class AppComponent implements OnInit {
   
   isLoggedIn: boolean = false;
 
+  userId: any = 0;
+
   constructor(private cartService: CartService, private router: Router, private dialog:MatDialog, private overlay: OverlayContainer) { }
 
   ngOnInit(): void {
+    this.checkingCredentials();
+
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       const darkClassName = 'darkMode';
       this.className = darkMode ? darkClassName : '';
@@ -40,10 +44,23 @@ export class AppComponent implements OnInit {
 
   ngDoCheck(): void {
     this._productCount = this.cartService.cart.length;
+    if(this.userId == 0 || this.userId == null) {
+      this.checkingCredentials();
+    }
+  }
+
+  checkingCredentials() {
+    if (localStorage.getItem("userId")) {
+      this.isLoggedIn = true;
+      let temp: any = localStorage.getItem("userId");
+      this.userId = parseInt(temp);
+      console.log(this.userId);
+    }
   }
 
   logout() {
-    alert("User successfully logged out!");
+    localStorage.clear();
+    this.isLoggedIn = false;
   }
 
 }
