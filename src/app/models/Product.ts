@@ -1,6 +1,6 @@
 export class Product{
     constructor(public productId:number, public productName:String, public productPrice:number, public productQuantity:number, 
-        public discount:boolean, public discountRate:number, public description:string, public productPic:string,public amount:Number){
+        public discount:boolean, public discountRate:number, public description:string, public productPic:string,public amount:number){
 
         this.productId=productId;
         this.productName=productName;

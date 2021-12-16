@@ -1,22 +1,40 @@
-<div class="featured">
-    <a>Items on Sale</a>
-    <div class="featuredProduct">
+<!-- <div>
+  <p>
+    <button (click)="jwtTest()">JwtTest Button</button>
+  </p>
+</div> -->
+
+<mat-card class="featured">
+    <mat-card-title>Featured Products</mat-card-title>
+    <mat-card class="featuredProduct" fxLayout="row">
 
         <tr *ngFor="let f of featured">
             <ul>
-                <div class="productName">{{f.productName}}</div>
-                <img class="displaypic" src="{{f.productPic}}">
-                <div class="productPrice">{{f.discountRate}} %</div>
-                <div class="productPrice">${{f.productPrice}}</div>
-                <div>Quantity: <input class="quantity" type="number" name="amount" min="1" max="{{f.productQuantity}}" [(ngModel)]="f.amount"></div>
-                <div><button (click)="addToCart(f)">Add to Cart</button></div>
+                <div class="productName"><h1>{{f.productName}}</h1></div>
+                <div>{{f.discountRate}}% Discount!</div>
+                <i *ngIf="f.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1 displaypic"></i>
+                <img *ngIf="f.productPic != null" class="displaypic" src="{{f.productPic}}">
+                <div class="productPrice">{{f.productPrice | currency:"USD"}}</div>
+                <div>
+                    <button class="addToCartButton" mat-raised-button (click)="addToCart(f)">Add to Cart</button>
+                    <mat-form-field class="quantity">
+                        <mat-label>Quantity</mat-label>
+                        <input type="number" matInput name="amount" min=1 max="{{f.productQuantity}}" [(ngModel)]="f.amount">
+                    </mat-form-field>
+                </div>
             </ul>
         </tr>
-    </div>
-</div>
+    </mat-card>
+</mat-card>
+
 <div class="search">
-    <input class="input" ype="text" placeholder="Search for your new items" [(ngModel)]="term">
-    <button (click)="searchProduct(term)">Search</button>
+    <mat-form-field appearance="fill" class="searchBar">
+        <mat-label>Product Search</mat-label>
+        <input matInput type="text" [(ngModel)]="term">
+        <button matSuffix mat-icon-button aria-label="search" (click)="searchProduct(term)">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
 </div>
 
 <div class="allProduct ">
@@ -24,8 +42,9 @@
     <div class="producttosell" *ngFor="let p of product">
         <div class="space">
             <td class="pic">
-                <div class="productName">{{p.productName}}</div>
-                <img id="productPic" class="displaypic" src="{{p.productPic}}"></td>
+                <div class="productName"><h1>{{p.productName}}</h1></div>
+                <i *ngIf="p.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1 displaypic"></i>
+                <img *ngIf="p.productPic != null" id="productPic" class="displaypic" src="{{p.productPic}}"></td>
 
             <td class="items">
 
@@ -34,10 +53,14 @@
                 </tr>
             </td>
             <td class="checkout">
-                <tr><span class="productPrice">${{p.productPrice}}</span></tr>
-                <tr>Quantity: <input class="quantity" type="number" name="amount" min="1" max="{{p.productQuantity}}" [(ngModel)]="p.amount"></tr>
-                <tr><span Class="button"><button  (click)="addToCart(p)">Add to Cart</button>
-                </span></tr>
+                <tr><span class="productPrice"><h2>{{p.productPrice | currency:"USD"}}</h2></span></tr>
+                <tr>
+                    <mat-form-field class="quantity">
+                        <mat-label>Quantity</mat-label>
+                        <input type="number" matInput name="amount" min=1 max="{{p.productQuantity}}" [(ngModel)]="p.amount">
+                    </mat-form-field>
+                    <button class="addToCartButton" mat-raised-button (click)="addToCart(p)">Add to Cart</button>
+                </tr>
 
             </td>
         </div>

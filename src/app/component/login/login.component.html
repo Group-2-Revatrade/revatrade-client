@@ -1,0 +1,21 @@
+<div class="container-fluid" id="div-login-component">
+
+	<h1>Login</h1>
+		<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+			<mat-form-field>
+				<mat-label>Username:</mat-label>
+				<input matInput type="text" formControlName="username" id="input-login-username" placeholder="username">
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-label>Password:</mat-label>
+				<input matInput type="password" formControlName="password" id="input-login-password" placeholder="password">
+			</mat-form-field>
+
+			<button mat-flat-button color="primary" id="button-login-submit" (click)="login()">Login</button>
+		</form>
+
+		<button mat-raised-button color="warn" id="button-login-newUser" (click)="newUser()">New User? Create Revatrade account</button>
+
+</div>

@@ -1,4 +1,4 @@
-<div>
+<div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
   <form class="container border shadow rounded my-5">
     <div class="row">
       <h2 class="col-12 fw-bolder text-center my-3">Login</h2>
@@ -23,7 +23,7 @@
       </div>
 
       <div *ngIf="!_isValid" class="d-flex justify-content-center text-danger my-3">
-        Username and/or password are incorrect! >>> HINT!!! "revatrade" :D
+        Username and/or password are incorrect!
       </div>
       <div *ngIf="_loginSuccess" class="d-flex justify-content-center text-success my-3">
         Login successful!

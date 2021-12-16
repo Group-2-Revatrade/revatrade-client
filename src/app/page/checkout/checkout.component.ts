@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
 
@@ -18,24 +19,37 @@ export class CheckoutComponent implements OnInit {
   _city: string = '';
   _zipCode: string = '';
   _orderAmount: number = 0; // With products array example, Total is $55
-  _orderDate: string = '';
+
   _orderPlaced: boolean = false;
   _isValid: boolean = true;
 
-  constructor(private cartService: CartService, private router: Router) { }
+  userId: number = 0;
 
+  constructor(private cartService: CartService, private orderService: OrderService, private router: Router) { }
+  
   ngOnInit(): void {
-    this.products = this.cartService.products;
+    if (this.userId == 0) {
+      this.checkingCredentials();
+      if(this.userId == 0) {
+        this.router.navigate(['login']);
+      }
+    }
+    
+    this.products = this.cartService.cart;
     this.calculateOrderAmount();
+  }
+
+  checkingCredentials() {
+    if (localStorage.getItem("userId")) {
+      let temp: any = localStorage.getItem("userId");
+      this.userId = parseInt(temp);
+    }
   }
 
   calculateOrderAmount(): void {
     this._orderAmount = 0;
     this.products.forEach((product) => {
-      if (product.discount == true)
-        this._orderAmount += (product.productPrice * (1 - product.discountRate) * product.productQuantity);
-      else
-        this._orderAmount += product.productPrice * product.productQuantity;
+        this._orderAmount += product.productPrice * product.amount;
     })
   }
 
@@ -43,25 +57,39 @@ export class CheckoutComponent implements OnInit {
     console.log(productId);
     this.products.forEach((product, index) => {
       if (product.productId == productId)
-        this.cartService.products.splice(index, 1);
+        this.cartService.cart.splice(index, 1);
     });
     this.calculateOrderAmount();
   }
 
   placeOrder(): void {
-    console.log(this.products);
-    console.log(this._address + ", " + this._city + ", " + this._zipCode);
-    console.log(this._orderAmount);
-    if(this._address != '' && this._city != '' && this._zipCode != '') {
+    
+    // Fields must not be empty
+    if (this._address != "" && this._city != "" && this._zipCode != "") {
       this._isValid = true;
-      // HTTP request goes here
-      if (true) { // To be trigger by the HTTP response body's variable
-        this._orderPlaced = true;
-        this.cartService.products = [];
-        setTimeout(() => {
-          this.router.navigate(['']);
-        }, 2000);
-      }
+      // Request to place order
+      let parseZipCode: number = parseInt(this._zipCode);
+      this.orderService.createOrder(this._address, this._city, parseZipCode, this._orderAmount).subscribe(order => {
+        if(order.success) {
+          // Iterate through the cart to include the details of the order
+          let counter: number = 0;
+          this.products.forEach(product => {
+            // Product price already accounts for discounts if any
+            this.orderService.createOrderDetails(order.data.orderId, product.productId, product.productPrice, product.amount);
+            counter++;
+          });
+          if(counter == this.products.length) {
+            this._orderPlaced = true;
+            this.cartService.cart = [];
+            sessionStorage.clear();
+            setTimeout(() => {
+              this.router.navigate(['']);
+            }, 2000);
+          }          
+        } else {
+          this._isValid = false;
+        }
+      })
     } else {
       this._isValid = false;
     }

@@ -1,9 +1,10 @@
         div.featuredProduct tr {
             display: inline-block;
             text-align: center;
-            padding: 15px;
+            padding: 5px;
             text-decoration: none;
-            border: 5px solid rgb(255, 167, 4);
+            border: 5px solid #ff9800;
+            margin: 0.25rem;
         }
         
         div.featuredProduct {
@@ -21,15 +22,19 @@
         }
         
         div.featured {
-            background-color: #333;
-            color: blue;
+            background-color: #474C55;
+            color: #ff9800;
             text-align: center;
             font-size: 18px;
+            padding: 0.5rem;
         }
         
         div.space {
-            border: 2px solid rgb(255, 188, 4);
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: black;
             width: 100%;
+            padding: 10px;
         }
         
         div.allProduct div.producttosell {
@@ -71,7 +76,17 @@
         }
         
         img.displaypic {
-            width: 120px;
+            min-width: 100px;
+            max-width: 300px;
+            min-height: 100px;
+            max-height: 200px;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        i.displaypic {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         
         .search {
@@ -81,4 +96,18 @@
         
         .input {
             width: 70%
+        }
+
+        mat-form-field.quantity {
+            width: 6rem;
+            padding-left: 0.5rem;
+        }
+
+        mat-form-field.searchBar {
+            width: 70%;
+        }
+
+        button.addToCartButton {
+            background-color: #72A4C2;
+            color: black;
         }
