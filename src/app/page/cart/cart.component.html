@@ -2,11 +2,11 @@
     <form class="row border shadow rounded my-5 p-5">
 
         <div class="h2 col-12 fw-bolder text-center my-3">Shopping Cart</div>
-        <div *ngIf="myOrders.length == 0" class="h5 col-12 fw-bolder text-center my-5">Cart is Empty...</div>
-        <div *ngIf="myOrders.length > 0" class="h5 col-12 fw-bolder text-center my-5">ITEMS: {{dbTotal}}</div>
+        <div *ngIf="orders.length < 0" class="h5 col-12 fw-bolder text-center my-5">Cart is Empty...</div>
+        <div *ngIf="orders.length == 0" class="h5 col-12 fw-bolder text-center my-5">ITEMS: {{products.length}}</div>
 
 
-        <div *ngFor="let order of myOrders" class="row">
+        <div *ngFor="let order of products" class="row">
             <div class="col-4 d-flex flex-column my-3">
                 <!-- If product's picture does not exist -->
                 <i *ngIf="order.productPic == null" class="fas fa-shopping-bag d-flex justify-content-center display-1"></i>
@@ -16,19 +16,19 @@
             <div class="col-8 d-flex flex-column my-3">
               <div>
                 <div class="row h5">
-                    <div class="col-6 py-2">{{order.productName}} </div>
+                    <div class="col-6 py-2">{{order.productName}}: <br> {{order.description}}</div>
+                    <div class="col-6 py-2"> </div>
                     <!-- If discount rate does not exist -->
-                    <!--div *ngIf="!order.discount" class="col-6 py-2">{{order.orderPrice | currency}}</div-->
+                    <!--div *ngIf="!order.discount" class="col-6 py-2">{{order.productPrice | currency}}</div-->
                     <!-- If discount rate exists -->
                     <!--div *ngIf="order.discount" class="col-6 py-2">{{order.orderPrice | currency}}</div-->
                     <!--div class="col-5 d-flex justify-content-end py-2"></div-->
-                    <div class="col-2 d-flex justify-content-start py-2">Price: {{order.orderPrice| currency}}</div>
-
+                    <div class="col-2 d-flex justify-content-start py-2">Price: {{order.productPrice| currency}}</div>
                     <div class="col-5 d-flex justify-content-end py-2"> </div>
-                    <div class="col-2 d-flex justify-content-start py-2">Quantity:{{order.orderQuantity | number}}</div>
+                    <div class="col-2 d-flex justify-content-start py-2">Quantity:{{order.productQuantity | number}}</div>
                 </div>
 
-                    <div class="col-2 d-flex justify-content-start py-2">{{order.orderTotal}}</div>
+                    <div class="col-2 d-flex justify-content-start py-2">{{_subTotal}}</div>
                     <a class="col-5 text-danger py-2" style="cursor: pointer;" (click)="removeFromCart(order.productId)">Delete</a>
                 </div>
 

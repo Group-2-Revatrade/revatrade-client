@@ -14,9 +14,10 @@ export class CartService {
  cart: Array<Product> = [];
  orders: Array<Orders> = [];
 
+
   constructor(private httpClient:HttpClient, private utilService: UtilService) { }
 
-  getMyOrders(userId:number){
+  getMyOrders(userId:string){
     console.log("Data Retrieval in progress.....");
     return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/cart/search?userId=${userId}`);
   }
@@ -25,8 +26,16 @@ export class CartService {
     return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/products/search/byId?productId=${productId}`);
   }
 
-  addProductToCart(order: Product){
-    return this.httpClient.post<Orders>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`,order);
+  //add Orders to Persistent BE-databse
+  AddtoMyshoppingCart(orderPrice: number, orderQuantity: number,  trxComplete:boolean, productId: number, user: number): Observable<any> {
+    return this.httpClient.post<any>(`${this.utilService.getServerDomain()}/revatrade/cart/new/`, {
+     "orderPrice": orderPrice,
+      "orderQuantity": orderQuantity,
+      "trxCompelete": false,
+      "product": productId,
+      "userId": parseInt(<string>sessionStorage.getItem("id")),
+      "user":user,
+    }, {'headers': this.utilService.headers});
   }
 
 }
