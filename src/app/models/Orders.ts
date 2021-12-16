@@ -1,3 +1,5 @@
+import {Product} from "./Product";
+
 export class Orders{
   constructor(public orderDetailsId:number, public userId:number, public orderPrice:number, public orderQuantity:number,
               public discount:boolean, public productId:number, public productName:String, public discountRate:number,
@@ -15,6 +17,8 @@ export class Orders{
     this.productPic=productPic;
     this.orderTotal =orderTotal;
   }
+
+
 
 
 }
