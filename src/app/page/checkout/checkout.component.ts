@@ -72,20 +72,17 @@ export class CheckoutComponent implements OnInit {
       this.orderService.createOrder(this._address, this._city, parseZipCode, this._orderAmount).subscribe(order => {
         if(order.success) {
           // Iterate through the cart to include the details of the order
-          let counter: number = 0;
           this.products.forEach(product => {
             // Product price already accounts for discounts if any
-            this.orderService.createOrderDetails(order.data.orderId, product.productId, product.productPrice, product.amount);
-            counter++;
+            this.orderService.createOrderDetails(order.data.orderId, product.productId, product.productPrice, product.amount).subscribe(details => {});
           });
-          if(counter == this.products.length) {
-            this._orderPlaced = true;
-            this.cartService.cart = [];
-            sessionStorage.clear();
-            setTimeout(() => {
-              this.router.navigate(['']);
-            }, 2000);
-          }          
+          this._orderPlaced = true;
+          this.cartService.cart = [];
+          sessionStorage.clear();
+          setTimeout(() => {
+            this.router.navigate(['']);
+          }, 2000);
+                    
         } else {
           this._isValid = false;
         }
