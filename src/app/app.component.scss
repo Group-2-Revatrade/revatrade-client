@@ -15,3 +15,15 @@ mat-toolbar {
 mat-card {
     max-width: 400px;
 }
+
+a {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
