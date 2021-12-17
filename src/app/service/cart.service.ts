@@ -18,7 +18,7 @@ export class CartService {
   constructor(private httpClient:HttpClient, private utilService: UtilService) { }
 
   getMyOrders(userId:string){
-    console.log("Data Retrieval in progress.....");
+    console.log("Data Retrieval in progress.....for user: " + userId  );
     return this.httpClient.get<Orders[]>(`${this.utilService.getServerDomain()}/revatrade/cart/search?userId=${userId}`);
   }
 

@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
    * call function .getMyOrders(Integer id)
    */
   getDataBaseOrders(userId){
-    userId = 2 //temp hold of userId for testing
+    userId = 1 //temp hold of userId for testing
    if(this.term!=null){
     this.cartService.getMyOrders(userId).subscribe((data)=>{
       this.cartItems= data;
